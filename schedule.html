@@ -15,7 +15,7 @@
     <nav class="navbar">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <img src="sticker.webp" alt="AstroLearn Logo" class="h-8 w-8 object-contain">
+                <span class="text-3xl animate-pulse">⭐</span>
                 <h1 class="text-2xl font-bold bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
                     AstroLearn
                 </h1>
@@ -47,32 +47,13 @@
                 Galaxy Timetable
             </span>
         </h1>
-        <p class="text-xl text-[#F5F7FA]/80">Live Tutoring Sessions & Group Study Opportunities</p>
+        <p class="text-xl text-[#F5F7FA]/80">Upcoming Study Missions</p>
     </section>
 
-    <!-- Live Tutoring Sessions Section -->
-    <section class="container mx-auto px-6 pb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
-            <span class="bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
-                📡 Live Tutoring Sessions
-            </span>
-        </h2>
-        <p class="text-center text-[#F5F7FA]/70 mb-8">One-on-one and small group sessions with expert tutors</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="tutoringSessionsGrid">
-            <!-- Tutoring sessions will be populated by JS -->
-        </div>
-    </section>
-
-    <!-- Group Study Opportunities Section -->
+    <!-- Sessions Grid -->
     <section class="container mx-auto px-6 pb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
-            <span class="bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
-                👥 Group Study Opportunities
-            </span>
-        </h2>
-        <p class="text-center text-[#F5F7FA]/70 mb-8">Collaborative study sessions with peers</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="groupStudyGrid">
-            <!-- Group study sessions will be populated by JS -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="sessionsGrid">
+            <!-- Sessions will be populated by JS -->
         </div>
     </section>
 
@@ -81,7 +62,7 @@
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p class="text-sm text-[#F5F7FA]/70 flex items-center gap-1">Powered by AstroLearn <img src="sticker.webp" alt="AstroLearn Logo" class="h-4 w-4 object-contain inline"></p>
+                    <p class="text-sm text-[#F5F7FA]/70">Powered by AstroLearn ⭐</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="about.html" class="footer-link">About</a>
@@ -94,63 +75,27 @@
 
     <script src="script.js"></script>
     <script>
-        // Live Tutoring Sessions
-        const tutoringSessions = [
-            { id: 1, subject: "Math", tutor: "Ava J.", time: "Monday 5:00 PM", type: "One-on-One", capacity: "1 student", planetColor: "#4FC3F7", icon: "🔭" },
-            { id: 2, subject: "Science", tutor: "Leo R.", time: "Tuesday 4:00 PM", type: "Small Group", capacity: "3-5 students", planetColor: "#FF6EC7", icon: "🧬" },
-            { id: 3, subject: "Reading", tutor: "Maya K.", time: "Friday 3:00 PM", type: "One-on-One", capacity: "1 student", planetColor: "#482880", icon: "📚" },
-            { id: 4, subject: "Language", tutor: "Sam T.", time: "Wednesday 6:00 PM", type: "Small Group", capacity: "3-5 students", planetColor: "#4FC3F7", icon: "🌍" },
-            { id: 5, subject: "Math Advanced", tutor: "Zoe L.", time: "Thursday 5:00 PM", type: "One-on-One", capacity: "1 student", planetColor: "#FF6EC7", icon: "🔭" },
-            { id: 6, subject: "Science Lab Help", tutor: "Max D.", time: "Saturday 2:00 PM", type: "Small Group", capacity: "3-5 students", planetColor: "#482880", icon: "⚗️" }
+        const sessions = [
+            { id: 1, subject: "Math", tutor: "Ava J.", time: "Monday 5 PM", planetColor: "#4FC3F7", icon: "🔭" },
+            { id: 2, subject: "Biology", tutor: "Leo R.", time: "Tuesday 4 PM", planetColor: "#FF6EC7", icon: "🧬" },
+            { id: 3, subject: "History", tutor: "Maya K.", time: "Friday 3 PM", planetColor: "#482880", icon: "🌍" },
+            { id: 4, subject: "Chemistry", tutor: "Sam T.", time: "Wednesday 6 PM", planetColor: "#4FC3F7", icon: "⚗️" },
+            { id: 5, subject: "Physics", tutor: "Zoe L.", time: "Thursday 5 PM", planetColor: "#FF6EC7", icon: "🌌" },
+            { id: 6, subject: "Literature", tutor: "Max D.", time: "Saturday 2 PM", planetColor: "#482880", icon: "📚" }
         ];
 
-        // Group Study Opportunities
-        const groupStudySessions = [
-            { id: 1, subject: "Math Study Group", organizer: "Student-led", time: "Monday 7:00 PM", participants: "8-12 students", topic: "Algebra & Geometry", planetColor: "#4FC3F7", icon: "🔭" },
-            { id: 2, subject: "Science Review", organizer: "Student-led", time: "Tuesday 6:00 PM", participants: "6-10 students", topic: "Biology & Chemistry", planetColor: "#FF6EC7", icon: "🧬" },
-            { id: 3, subject: "Reading Circle", organizer: "Student-led", time: "Wednesday 5:00 PM", participants: "5-8 students", topic: "Literary Analysis", planetColor: "#482880", icon: "📚" },
-            { id: 4, subject: "Language Practice", organizer: "Student-led", time: "Thursday 7:00 PM", participants: "6-10 students", topic: "Conversation Practice", planetColor: "#4FC3F7", icon: "🌍" },
-            { id: 5, subject: "Test Prep Group", organizer: "Student-led", time: "Friday 6:00 PM", participants: "10-15 students", topic: "Exam Preparation", planetColor: "#FF6EC7", icon: "📝" },
-            { id: 6, subject: "Homework Help", organizer: "Student-led", time: "Sunday 3:00 PM", participants: "8-12 students", topic: "All Subjects", planetColor: "#482880", icon: "✏️" }
-        ];
-
-        function loadTutoringSessions() {
-            const grid = document.getElementById('tutoringSessionsGrid');
-            grid.innerHTML = tutoringSessions.map(session => `
+        function loadSessions() {
+            const grid = document.getElementById('sessionsGrid');
+            grid.innerHTML = sessions.map(session => `
                 <div class="planet-card glass-card p-6 relative overflow-hidden" style="animation-delay: ${Math.random() * 2}s">
                     <div class="absolute top-4 right-4 text-4xl opacity-50">${session.icon}</div>
                     <div class="planet-circle mb-4" style="background: radial-gradient(circle, ${session.planetColor}, ${session.planetColor}88)">
                         <div class="planet-inner"></div>
-                    </div>
-                    <div class="mb-2">
-                        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#4FC3F7]/20 text-[#4FC3F7] mb-2">LIVE TUTORING</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-2">${session.subject}</h3>
                     <p class="text-[#F5F7FA]/70 mb-1">👨‍🏫 Tutor: ${session.tutor}</p>
-                    <p class="text-[#F5F7FA]/70 mb-1">🕐 ${session.time}</p>
-                    <p class="text-[#F5F7FA]/70 mb-1">👥 ${session.type} (${session.capacity})</p>
-                    <button class="btn-primary w-full mt-4">Join Session</button>
-                </div>
-            `).join('');
-        }
-
-        function loadGroupStudySessions() {
-            const grid = document.getElementById('groupStudyGrid');
-            grid.innerHTML = groupStudySessions.map(session => `
-                <div class="planet-card glass-card p-6 relative overflow-hidden" style="animation-delay: ${Math.random() * 2}s">
-                    <div class="absolute top-4 right-4 text-4xl opacity-50">${session.icon}</div>
-                    <div class="planet-circle mb-4" style="background: radial-gradient(circle, ${session.planetColor}, ${session.planetColor}88)">
-                        <div class="planet-inner"></div>
-                    </div>
-                    <div class="mb-2">
-                        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#FF6EC7]/20 text-[#FF6EC7] mb-2">GROUP STUDY</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">${session.subject}</h3>
-                    <p class="text-[#F5F7FA]/70 mb-1">👤 Organizer: ${session.organizer}</p>
-                    <p class="text-[#F5F7FA]/70 mb-1">🕐 ${session.time}</p>
-                    <p class="text-[#F5F7FA]/70 mb-1">👥 ${session.participants}</p>
-                    <p class="text-[#F5F7FA]/70 mb-4">📖 Topic: ${session.topic}</p>
-                    <button class="btn-primary w-full">Join Group</button>
+                    <p class="text-[#F5F7FA]/70 mb-4">🕐 ${session.time}</p>
+                    <button class="btn-primary w-full">Join Mission</button>
                 </div>
             `).join('');
         }
@@ -162,8 +107,7 @@
             }
             
             // Load content and update navigation
-            loadTutoringSessions();
-            loadGroupStudySessions();
+            loadSessions();
             initFloatingStars();
             updateNavigation();
             setupProtectedLinks();

@@ -15,7 +15,7 @@
     <nav class="navbar">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <img src="sticker.webp" alt="AstroLearn Logo" class="h-8 w-8 object-contain">
+                <span class="text-3xl animate-pulse">⭐</span>
                 <h1 class="text-2xl font-bold bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
                     AstroLearn
                 </h1>
@@ -52,71 +52,29 @@
 
     <!-- Quick Access -->
     <section class="container mx-auto px-6 mb-12">
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid md:grid-cols-3 gap-6">
             <button id="starMapBtn" class="glass-card p-6 text-center hover:scale-105 transition-transform cursor-pointer">
                 <div class="text-4xl mb-3">📥</div>
-                <h3 class="text-lg font-bold">Learning Launchpad</h3>
-                <p class="text-sm text-[#F5F7FA]/70 mt-2">Downloadable Materials</p>
+                <h3 class="text-lg font-bold">Download Star Maps</h3>
             </button>
             <a href="flashcards.html" class="glass-card p-6 text-center hover:scale-105 transition-transform cursor-pointer block">
                 <div class="text-4xl mb-3">📚</div>
                 <h3 class="text-lg font-bold">Flashcards</h3>
-                <p class="text-sm text-[#F5F7FA]/70 mt-2">Interactive Study Cards</p>
             </a>
             <a href="quizzes.html" class="glass-card p-6 text-center hover:scale-105 transition-transform cursor-pointer block">
                 <div class="text-4xl mb-3">📝</div>
                 <h3 class="text-lg font-bold">Quizzes</h3>
-                <p class="text-sm text-[#F5F7FA]/70 mt-2">Practice Tests</p>
             </a>
-            <button id="videosBtn" class="glass-card p-6 text-center hover:scale-105 transition-transform cursor-pointer">
-                <div class="text-4xl mb-3">🎥</div>
-                <h3 class="text-lg font-bold">Video Lessons</h3>
-                <p class="text-sm text-[#F5F7FA]/70 mt-2">Educational Videos</p>
-            </button>
-        </div>
-    </section>
-
-    <!-- Videos Section -->
-    <section class="container mx-auto px-6 mb-12" id="videosSection">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-3xl font-bold">
-                <span class="bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
-                    📹 Educational Videos
-                </span>
-            </h2>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="videosGrid">
-            <!-- Videos will be populated by JS -->
-        </div>
-    </section>
-
-    <!-- Downloadable Materials Section -->
-    <section class="container mx-auto px-6 mb-12" id="downloadsSection">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-3xl font-bold">
-                <span class="bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
-                    📥 Downloadable Materials
-                </span>
-            </h2>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="downloadsGrid">
-            <!-- Downloadable materials will be populated by JS -->
-        </div>
+            </div>
     </section>
 
     <!-- Lessons Grid -->
     <section class="container mx-auto px-6 pb-16">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-3xl font-bold">
-                <span class="bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
-                    Available Lessons
-                </span>
-            </h2>
-            <button onclick="restartProgress()" class="inline-flex items-center gap-2 btn-secondary py-2 px-4 text-sm" id="restartBtn">
-                <span>↺</span>
-                <span>Restart Progress</span>
-            </button>
-        </div>
+        <h2 class="text-3xl font-bold mb-8 text-center">
+            <span class="bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
+                Available Lessons
+            </span>
+        </h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="lessonsGrid">
             <!-- Lessons will be populated by JS -->
                             </div>
@@ -127,7 +85,7 @@
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p class="text-sm text-[#F5F7FA]/70 flex items-center gap-1">Powered by AstroLearn <img src="sticker.webp" alt="AstroLearn Logo" class="h-4 w-4 object-contain inline"></p>
+                    <p class="text-sm text-[#F5F7FA]/70">Powered by AstroLearn ⭐</p>
                             </div>
                 <div class="flex space-x-6">
                     <a href="about.html" class="footer-link">About</a>
@@ -137,21 +95,6 @@
                         </div>
                     </div>
     </footer>
-
-    <!-- Lesson Modal -->
-    <div id="lessonModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="fixed inset-0 bg-black/70 backdrop-blur-sm" onclick="closeLessonModal()"></div>
-        <div class="relative glass-card p-6 md:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto z-10">
-            <button onclick="closeLessonModal()" class="absolute top-4 right-4 text-2xl text-[#F5F7FA]/70 hover:text-[#F5F7FA]">✕</button>
-            <div id="lessonContent">
-                <!-- Lesson content will be populated by JS -->
-            </div>
-            <div class="mt-6 flex gap-4 justify-end">
-                <button onclick="closeLessonModal()" class="btn-secondary">Close</button>
-                <button onclick="completeCurrentLesson()" class="btn-primary" id="completeLessonBtn">Mark as Complete</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Star Map Roadmap Modal -->
     <div id="starMapModal" class="star-map-modal hidden">
@@ -206,570 +149,21 @@
             }
         }
 
-        // Lesson content for resources page
-        const lessonContent = {
-            "Algebra Basics": {
-                title: "Algebra Basics",
-                introduction: "Welcome to Algebra Basics! Algebra is the branch of mathematics that uses symbols and letters to represent numbers and quantities in formulas and equations. It's the foundation for advanced mathematics and helps solve real-world problems.",
-                concepts: [
-                    {
-                        heading: "What is Algebra?",
-                        explanation: "Algebra is a branch of mathematics that uses symbols (like x, y, z) to represent unknown values. These symbols are called variables. Algebra helps us solve problems where we don't know all the numbers. For example, if you have 5 apples and want to know how many more you need to have 10 total, algebra helps you find that answer.",
-                        example: "If x + 5 = 10, then x = 5. The variable x represents the unknown number of apples you need."
-                    },
-                    {
-                        heading: "Basic Operations",
-                        explanation: "In algebra, you use the same operations as arithmetic: addition (+), subtraction (-), multiplication (× or ·), and division (÷ or /). The difference is that you're working with variables. You can add, subtract, multiply, and divide both numbers and variables.",
-                        example: "2x + 3x = 5x (combining like terms), 4a - 2a = 2a, 3y × 2 = 6y"
-                    },
-                    {
-                        heading: "Solving Equations",
-                        explanation: "To solve an equation, you need to find the value of the variable that makes the equation true. You do this by performing the same operation on both sides of the equation. The goal is to isolate the variable on one side.",
-                        example: "To solve x + 5 = 10: Subtract 5 from both sides: x + 5 - 5 = 10 - 5, which gives x = 5."
-                    },
-                    {
-                        heading: "Like Terms",
-                        explanation: "Like terms are terms that have the same variable raised to the same power. You can combine like terms by adding or subtracting their coefficients. For example, 3x and 5x are like terms, but 3x and 3y are not.",
-                        example: "3x + 5x = 8x (like terms), but 3x + 5y cannot be combined (different variables)"
-                    }
-                ],
-                practiceProblems: [
-                    {
-                        problem: "Solve for x: x + 7 = 15",
-                        solution: "Subtract 7 from both sides: x + 7 - 7 = 15 - 7, so x = 8"
-                    },
-                    {
-                        problem: "Simplify: 4a + 3a - 2a",
-                        solution: "Combine like terms: (4 + 3 - 2)a = 5a"
-                    },
-                    {
-                        problem: "Solve for y: 2y = 14",
-                        solution: "Divide both sides by 2: 2y ÷ 2 = 14 ÷ 2, so y = 7"
-                    }
-                ],
-                summary: "Algebra uses variables (letters) to represent unknown values. You can perform the same operations on both sides of an equation to solve for variables. Like terms can be combined by adding or subtracting their coefficients. Practice solving equations step by step!"
-            },
-            "Cell Structure": {
-                title: "Cell Structure",
-                introduction: "Welcome to Cell Structure! Cells are the basic building blocks of all living things. Understanding cell structure helps us understand how life works at the most fundamental level.",
-                concepts: [
-                    {
-                        heading: "What is a Cell?",
-                        explanation: "A cell is the smallest unit of life. All living organisms are made of one or more cells. Cells carry out all the functions necessary for life, including growth, reproduction, and responding to their environment. There are two main types of cells: prokaryotic (bacteria) and eukaryotic (plants, animals, fungi).",
-                        example: "Your body contains trillions of cells, each performing specific functions. Muscle cells help you move, nerve cells transmit signals, and blood cells carry oxygen."
-                    },
-                    {
-                        heading: "Cell Membrane",
-                        explanation: "The cell membrane (also called plasma membrane) is a protective barrier that surrounds the cell. It's made of a double layer of lipids (fats) and proteins. The membrane controls what enters and leaves the cell, maintaining the cell's internal environment.",
-                        example: "Think of the cell membrane like a security guard at a building - it decides who and what can come in and go out."
-                    },
-                    {
-                        heading: "Nucleus",
-                        explanation: "The nucleus is the control center of the cell. It contains the cell's DNA (genetic material) which holds instructions for making proteins and controlling cell activities. The nucleus is surrounded by a nuclear membrane. Only eukaryotic cells have a nucleus.",
-                        example: "The nucleus is like the brain of the cell - it contains all the instructions (DNA) needed for the cell to function."
-                    },
-                    {
-                        heading: "Cytoplasm and Organelles",
-                        explanation: "Cytoplasm is the gel-like substance that fills the cell. It contains organelles (small structures) that perform specific functions. Key organelles include: mitochondria (powerhouse, makes energy), ribosomes (make proteins), endoplasmic reticulum (transports materials), Golgi apparatus (packages proteins), and lysosomes (digest waste).",
-                        example: "Mitochondria are like power plants - they convert food into energy the cell can use. Ribosomes are like factories - they build proteins."
-                    }
-                ],
-                practiceProblems: [
-                    {
-                        problem: "What is the function of the cell membrane?",
-                        solution: "The cell membrane controls what enters and leaves the cell, protecting the cell and maintaining its internal environment."
-                    },
-                    {
-                        problem: "What is stored in the nucleus?",
-                        solution: "The nucleus contains DNA, which holds genetic instructions for the cell."
-                    },
-                    {
-                        problem: "What is the function of mitochondria?",
-                        solution: "Mitochondria are the powerhouse of the cell - they convert food into energy (ATP) that the cell can use."
-                    }
-                ],
-                summary: "Cells are the basic units of life. The cell membrane protects and controls what enters/leaves. The nucleus contains DNA and controls cell activities. Organelles in the cytoplasm perform specific functions like making energy (mitochondria) and proteins (ribosomes). Understanding cell structure helps us understand how living things work!"
-            },
-            "World War II": {
-                title: "World War II",
-                introduction: "Welcome to World War II! World War II (1939-1945) was the deadliest conflict in human history, involving most of the world's nations. Understanding this war helps us understand modern history and the importance of peace.",
-                concepts: [
-                    {
-                        heading: "Causes of World War II",
-                        explanation: "World War II had several major causes: The harsh terms of the Treaty of Versailles after WWI left Germany economically devastated and humiliated. The rise of fascist dictators like Adolf Hitler in Germany, Benito Mussolini in Italy, and militarism in Japan. Economic depression in the 1930s created instability. Aggressive expansion by Germany, Italy, and Japan seeking more territory and resources.",
-                        example: "Hitler's Nazi Germany invaded Poland in 1939, which triggered Britain and France to declare war, starting World War II."
-                    },
-                    {
-                        heading: "Major Powers and Alliances",
-                        explanation: "The war was fought between two main alliances: The Axis Powers: Germany, Italy, and Japan (later joined by others). The Allied Powers: Initially Britain and France, later joined by the Soviet Union, United States, China, and many others. The United States entered the war after Japan attacked Pearl Harbor in 1941.",
-                        example: "The 'Big Three' Allied leaders were Winston Churchill (Britain), Franklin Roosevelt (US), and Joseph Stalin (Soviet Union)."
-                    },
-                    {
-                        heading: "Key Events and Battles",
-                        explanation: "Important events include: 1939 - Germany invades Poland, war begins. 1940 - Battle of Britain (air battle over England). 1941 - Pearl Harbor attack brings US into war. 1942-1943 - Battle of Stalingrad (turning point in Europe). 1944 - D-Day (Allied invasion of Normandy). 1945 - Atomic bombs dropped on Japan, war ends.",
-                        example: "D-Day (June 6, 1944) was the largest seaborne invasion in history, when Allied forces landed in France to begin liberating Europe from Nazi control."
-                    },
-                    {
-                        heading: "The Holocaust",
-                        explanation: "The Holocaust was the systematic persecution and murder of six million Jews and millions of others (Roma, disabled people, political opponents) by Nazi Germany. It was carried out in concentration camps and through mass shootings. The Holocaust represents one of the darkest chapters in human history and serves as a reminder of the dangers of hatred and prejudice.",
-                        example: "Auschwitz was the largest concentration camp, where over one million people, mostly Jews, were murdered."
-                    }
-                ],
-                practiceProblems: [
-                    {
-                        problem: "What event triggered the start of World War II?",
-                        solution: "Germany's invasion of Poland in September 1939 triggered Britain and France to declare war, starting World War II."
-                    },
-                    {
-                        problem: "What brought the United States into World War II?",
-                        solution: "The Japanese attack on Pearl Harbor on December 7, 1941, brought the United States into World War II."
-                    },
-                    {
-                        problem: "What was D-Day and why was it important?",
-                        solution: "D-Day (June 6, 1944) was the Allied invasion of Normandy, France. It was important because it opened a second front against Germany and began the liberation of Western Europe from Nazi control."
-                    }
-                ],
-                summary: "World War II (1939-1945) was caused by harsh post-WWI conditions, economic depression, and aggressive expansion by fascist powers. It was fought between the Axis (Germany, Italy, Japan) and Allies (US, Britain, Soviet Union, etc.). Key events include Pearl Harbor, D-Day, and the Holocaust. The war ended in 1945, reshaping the world and leading to the United Nations."
-            },
-            "Periodic Table": {
-                title: "Periodic Table",
-                introduction: "Welcome to the Periodic Table! The periodic table is a chart that organizes all known chemical elements. It's one of the most important tools in chemistry and helps us understand how elements behave and relate to each other.",
-                concepts: [
-                    {
-                        heading: "What is the Periodic Table?",
-                        explanation: "The periodic table is a systematic arrangement of all chemical elements. Elements are organized by their atomic number (number of protons) and chemical properties. Each element has a unique symbol (like H for hydrogen, O for oxygen) and is placed in a specific position that reveals its characteristics.",
-                        example: "Hydrogen (H) is element #1 with 1 proton. Carbon (C) is element #6 with 6 protons. Oxygen (O) is element #8 with 8 protons."
-                    },
-                    {
-                        heading: "Organization and Structure",
-                        explanation: "The table is organized into rows (periods) and columns (groups/families). Periods are horizontal rows - elements in the same period have the same number of electron shells. Groups are vertical columns - elements in the same group have similar chemical properties. The table is arranged so elements with similar properties are near each other.",
-                        example: "Group 1 (alkali metals) includes lithium, sodium, and potassium - they all react similarly with water. Period 2 includes lithium, beryllium, boron, carbon, nitrogen, oxygen, fluorine, and neon - they all have 2 electron shells."
-                    },
-                    {
-                        heading: "Key Information on Each Element",
-                        explanation: "Each element square shows: Atomic number (number of protons, top left). Element symbol (one or two letters, center). Element name (below symbol). Atomic mass (average mass of atoms, usually bottom). This information helps predict how elements will behave and react.",
-                        example: "Carbon's square shows: Atomic number 6, symbol C, name Carbon, atomic mass ~12.01"
-                    },
-                    {
-                        heading: "Major Groups",
-                        explanation: "Important groups include: Group 1 - Alkali metals (very reactive, like sodium). Group 2 - Alkaline earth metals (reactive, like calcium). Group 17 - Halogens (very reactive nonmetals, like chlorine). Group 18 - Noble gases (unreactive, like helium, neon). The middle section contains transition metals (like iron, copper, gold).",
-                        example: "Sodium (Na) is in Group 1 - it's so reactive it explodes in water! Helium (He) is in Group 18 - it's so unreactive it doesn't form compounds."
-                    }
-                ],
-                practiceProblems: [
-                    {
-                        problem: "What does the atomic number tell you about an element?",
-                        solution: "The atomic number tells you the number of protons in the nucleus of an atom of that element. It also determines the element's position on the periodic table."
-                    },
-                    {
-                        problem: "Why do elements in the same group have similar properties?",
-                        solution: "Elements in the same group have the same number of valence electrons (electrons in the outermost shell), which determines how they react chemically. This gives them similar properties."
-                    },
-                    {
-                        problem: "What is the difference between a period and a group?",
-                        solution: "A period is a horizontal row - elements in the same period have the same number of electron shells. A group is a vertical column - elements in the same group have similar chemical properties because they have the same number of valence electrons."
-                    }
-                ],
-                summary: "The periodic table organizes all chemical elements by atomic number and properties. Elements are arranged in periods (rows) and groups (columns). Each element shows atomic number, symbol, name, and atomic mass. Groups contain elements with similar properties. Understanding the periodic table helps predict how elements behave and react!"
-            },
-            "Quantum Physics": {
-                title: "Quantum Physics",
-                introduction: "Welcome to Quantum Physics! Quantum physics is the branch of physics that studies matter and energy at the smallest scales - atoms and subatomic particles. It reveals a strange and fascinating world where the rules are very different from everyday physics.",
-                concepts: [
-                    {
-                        heading: "What is Quantum Physics?",
-                        explanation: "Quantum physics (also called quantum mechanics) is the study of matter and energy at the atomic and subatomic level. At this tiny scale, particles behave in ways that seem impossible - they can be in multiple places at once, exist as both particles and waves, and their properties are uncertain until measured. Quantum physics explains how atoms work and why matter behaves the way it does.",
-                        example: "In the quantum world, an electron can exist in multiple energy states simultaneously until it's observed - this is called superposition."
-                    },
-                    {
-                        heading: "Key Quantum Concepts",
-                        explanation: "Important quantum concepts include: Wave-particle duality - particles like electrons act as both particles and waves. Uncertainty principle - you can't know both position and momentum precisely. Quantum entanglement - particles can be connected in ways that affect each other instantly, even at great distances. Superposition - particles can exist in multiple states at once until observed.",
-                        example: "Light behaves as both a wave (like ripples in water) and a particle (like tiny bullets called photons) - this is wave-particle duality."
-                    },
-                    {
-                        heading: "Quantum vs Classical Physics",
-                        explanation: "Classical physics (Newton's laws) works well for large objects like cars and planets. Quantum physics is needed for tiny particles like electrons and atoms. In classical physics, everything is predictable. In quantum physics, everything is probabilistic - we can only predict probabilities, not certainties. Quantum effects become important at atomic scales.",
-                        example: "A baseball follows predictable paths (classical), but an electron's position is uncertain and probabilistic (quantum)."
-                    },
-                    {
-                        heading: "Applications of Quantum Physics",
-                        explanation: "Quantum physics has many real-world applications: Lasers and LED lights use quantum effects. Computers and smartphones rely on quantum mechanics in semiconductors. MRI machines use quantum properties of atoms. Quantum computers (being developed) could solve problems impossible for regular computers. Understanding quantum physics helps us develop new technologies.",
-                        example: "Your smartphone's processor uses quantum mechanics - electrons moving through semiconductors create the electrical signals that power your device."
-                    }
-                ],
-                practiceProblems: [
-                    {
-                        problem: "What is wave-particle duality?",
-                        solution: "Wave-particle duality is the concept that particles like electrons and photons can exhibit both wave-like and particle-like properties, depending on how they're observed or measured."
-                    },
-                    {
-                        problem: "Why is quantum physics needed for atoms but not for large objects?",
-                        solution: "Quantum effects become significant at very small scales (atomic level). For large objects, quantum effects average out and classical physics works fine. Atoms and subatomic particles are small enough that quantum mechanics is necessary to accurately describe their behavior."
-                    },
-                    {
-                        problem: "What is superposition in quantum physics?",
-                        solution: "Superposition is the principle that quantum particles can exist in multiple states or positions simultaneously until they are observed or measured. Once observed, the particle 'collapses' into a single definite state."
-                    }
-                ],
-                summary: "Quantum physics studies matter and energy at atomic scales. Key concepts include wave-particle duality, uncertainty, entanglement, and superposition. Quantum physics is probabilistic, not deterministic like classical physics. It has many applications in technology like lasers, computers, and medical imaging. Quantum physics reveals a strange but fascinating world at the smallest scales!"
-            },
-            "Shakespeare": {
-                title: "Shakespeare",
-                introduction: "Welcome to Shakespeare! William Shakespeare (1564-1616) is widely considered the greatest writer in the English language. His plays and poems have influenced literature, theater, and culture for over 400 years. Understanding Shakespeare helps us understand English literature and human nature.",
-                concepts: [
-                    {
-                        heading: "Who Was Shakespeare?",
-                        explanation: "William Shakespeare was an English playwright, poet, and actor from Stratford-upon-Avon, England. He wrote during the Elizabethan and Jacobean eras (late 1500s to early 1600s). He wrote approximately 39 plays, 154 sonnets, and several long poems. His works are still performed and studied worldwide today, over 400 years after his death.",
-                        example: "Shakespeare's most famous plays include 'Romeo and Juliet,' 'Hamlet,' 'Macbeth,' 'A Midsummer Night's Dream,' and 'The Tempest.'"
-                    },
-                    {
-                        heading: "Major Works and Genres",
-                        explanation: "Shakespeare wrote in three main genres: Tragedies - serious plays ending in death (Hamlet, Macbeth, Romeo and Juliet, Othello, King Lear). Comedies - humorous plays with happy endings (A Midsummer Night's Dream, Much Ado About Nothing, The Tempest). Histories - plays about English kings (Henry IV, Richard III). His sonnets are 14-line poems exploring themes of love, beauty, and time.",
-                        example: "'Romeo and Juliet' is a tragedy about two young lovers whose deaths unite their feuding families. 'A Midsummer Night's Dream' is a comedy about magical mix-ups in a forest."
-                    },
-                    {
-                        heading: "Shakespeare's Language",
-                        explanation: "Shakespeare wrote in Early Modern English, which can seem difficult today. He used: Iambic pentameter - a rhythm pattern with 10 syllables per line (da-DUM da-DUM da-DUM da-DUM da-DUM). Blank verse - unrhymed iambic pentameter. Prose - regular speech for common characters. He also invented many words and phrases still used today.",
-                        example: "Famous Shakespeare phrases: 'To be or not to be' (Hamlet), 'All the world's a stage' (As You Like It), 'What's in a name?' (Romeo and Juliet)"
-                    },
-                    {
-                        heading: "Themes and Impact",
-                        explanation: "Shakespeare explored universal themes: Love and romance, Jealousy and betrayal, Ambition and power, Fate vs free will, Appearance vs reality, Human nature. His works remain relevant because they explore timeless human experiences. Shakespeare's influence on English language, literature, and theater is immeasurable.",
-                        example: "The theme of ambition in 'Macbeth' shows how unchecked ambition can lead to destruction - a theme still relevant today in politics and business."
-                    }
-                ],
-                practiceProblems: [
-                    {
-                        problem: "What are the three main genres of Shakespeare's plays?",
-                        solution: "The three main genres are: Tragedies (serious plays ending in death), Comedies (humorous plays with happy endings), and Histories (plays about English kings)."
-                    },
-                    {
-                        problem: "What is iambic pentameter?",
-                        solution: "Iambic pentameter is a rhythm pattern with five pairs of syllables, each pair having an unstressed syllable followed by a stressed syllable (da-DUM). It has 10 syllables per line and was commonly used by Shakespeare."
-                    },
-                    {
-                        problem: "Why is Shakespeare still studied and performed today?",
-                        solution: "Shakespeare is still relevant because his works explore universal human themes (love, jealousy, ambition, etc.) that remain meaningful across time and cultures. His mastery of language, character development, and storytelling continues to influence literature and theater."
-                    }
-                ],
-                summary: "Shakespeare (1564-1616) was the greatest English writer, creating 39 plays, 154 sonnets, and poems. He wrote tragedies, comedies, and histories exploring universal themes. He used iambic pentameter and invented many words/phrases. His works remain relevant because they explore timeless human experiences. Shakespeare's influence on literature and language is immeasurable!"
-            },
-            "Calculus I": {
-                title: "Calculus I",
-                introduction: "Welcome to Calculus I! Calculus is a branch of mathematics that studies rates of change and accumulation. It's essential for understanding motion, growth, optimization, and many real-world phenomena. Calculus I introduces the fundamental concepts of derivatives and integrals.",
-                concepts: [
-                    {
-                        heading: "What is Calculus?",
-                        explanation: "Calculus is the mathematics of change. It has two main branches: Differential calculus (derivatives) - studies rates of change, slopes, and instantaneous rates. Integral calculus (integrals) - studies accumulation, areas under curves, and total change. Calculus helps solve problems involving motion, growth, optimization, and continuous change that algebra alone cannot handle.",
-                        example: "Calculus can find the exact speed of a car at a specific moment (derivative) or calculate the total distance traveled (integral)."
-                    },
-                    {
-                        heading: "Limits",
-                        explanation: "Limits are the foundation of calculus. A limit describes what value a function approaches as the input approaches a certain value. Limits allow us to work with concepts like instantaneous rates of change. The notation lim(x→a) f(x) means 'the limit of f(x) as x approaches a.' Limits help define derivatives and integrals.",
-                        example: "As x gets closer and closer to 2, what does x² get closer to? The limit is 4, written as lim(x→2) x² = 4."
-                    },
-                    {
-                        heading: "Derivatives",
-                        explanation: "A derivative measures the rate of change of a function. It tells you the slope of a curve at any point. The derivative of position gives velocity. The derivative of velocity gives acceleration. Notation: f'(x) or df/dx. Derivatives help find maximums, minimums, and optimize functions.",
-                        example: "If f(x) = x², then f'(x) = 2x. This means the slope of the curve x² at any point x is 2x."
-                    },
-                    {
-                        heading: "Integrals",
-                        explanation: "An integral finds the area under a curve or the accumulation of a quantity. The integral is the reverse of the derivative. If derivative finds rate of change, integral finds total change. Notation: ∫f(x)dx. Integrals help calculate areas, volumes, and total accumulated quantities.",
-                        example: "The integral of 2x is x² + C. This finds the area under the line y = 2x or the total accumulated value."
-                    }
-                ],
-                practiceProblems: [
-                    {
-                        problem: "What is the difference between a derivative and an integral?",
-                        solution: "A derivative measures the rate of change (slope) of a function at a point. An integral finds the accumulation or area under a curve. They are inverse operations - the derivative of an integral gives back the original function."
-                    },
-                    {
-                        problem: "What does a limit represent?",
-                        solution: "A limit represents the value that a function approaches as the input approaches a certain value. Limits are the foundation of calculus, allowing us to define derivatives and work with instantaneous rates of change."
-                    },
-                    {
-                        problem: "Why is calculus important?",
-                        solution: "Calculus is important because it allows us to study rates of change and accumulation, which are fundamental to understanding motion, growth, optimization, and many real-world phenomena. It's essential in physics, engineering, economics, and many other fields."
-                    }
-                ],
-                summary: "Calculus studies rates of change (derivatives) and accumulation (integrals). Limits are the foundation, describing what values functions approach. Derivatives find slopes and rates of change. Integrals find areas and total accumulation. Calculus is essential for understanding motion, optimization, and continuous change in mathematics, science, and engineering!"
-            },
-            "Genetics": {
-                title: "Genetics",
-                introduction: "Welcome to Genetics! Genetics is the study of heredity - how traits are passed from parents to offspring. Understanding genetics helps us understand how living things inherit characteristics, how evolution works, and how to treat genetic diseases.",
-                concepts: [
-                    {
-                        heading: "What is Genetics?",
-                        explanation: "Genetics is the branch of biology that studies genes, heredity, and variation in living organisms. Genes are units of heredity made of DNA. They carry instructions for making proteins, which determine traits. Genetics explains why you might have your mother's eyes or your father's height - traits are inherited through genes passed from parents to children.",
-                        example: "If both parents have brown eyes, their child will likely have brown eyes because the brown eye gene is dominant and was passed down."
-                    },
-                    {
-                        heading: "DNA and Genes",
-                        explanation: "DNA (deoxyribonucleic acid) is the molecule that carries genetic information. It's made of four bases: A (adenine), T (thymine), G (guanine), and C (cytosine). Genes are segments of DNA that code for specific proteins. The sequence of bases in a gene determines what protein it makes. All your cells contain the same DNA, but different genes are active in different cells.",
-                        example: "A gene might have the sequence ATGCGTA... which codes for a specific protein that determines a trait like eye color."
-                    },
-                    {
-                        heading: "Inheritance Patterns",
-                        explanation: "Traits are inherited through dominant and recessive genes. Dominant traits only need one copy of the gene to appear (like brown eyes). Recessive traits need two copies to appear (like blue eyes). You get one copy of each gene from each parent. Punnett squares help predict inheritance patterns.",
-                        example: "If one parent has brown eyes (BB) and one has blue eyes (bb), all children will have brown eyes (Bb) because brown is dominant. But they carry the blue eye gene."
-                    },
-                    {
-                        heading: "Mutations and Variation",
-                        explanation: "Mutations are changes in DNA sequence. They can be: Beneficial - help survival (rare). Harmful - cause diseases. Neutral - no effect. Mutations create genetic variation, which is essential for evolution. Natural selection acts on this variation. Some mutations are inherited, others occur during life.",
-                        example: "A mutation in the gene for hemoglobin causes sickle cell disease, but it also provides resistance to malaria in some cases."
-                    }
-                ],
-                practiceProblems: [
-                    {
-                        problem: "What is the relationship between DNA, genes, and proteins?",
-                        solution: "DNA contains genes, which are segments that code for specific proteins. The sequence of bases in a gene determines what protein it makes. Proteins determine traits and characteristics."
-                    },
-                    {
-                        problem: "What's the difference between dominant and recessive traits?",
-                        solution: "Dominant traits only need one copy of the gene to appear (like brown eyes). Recessive traits need two copies of the gene to appear (like blue eyes)."
-                    },
-                    {
-                        problem: "Why are mutations important?",
-                        solution: "Mutations create genetic variation, which is essential for evolution. Natural selection acts on this variation. While some mutations are harmful, they're the source of genetic diversity that allows species to adapt and evolve."
-                    }
-                ],
-                summary: "Genetics studies how traits are inherited through genes. DNA contains genes that code for proteins, which determine traits. Traits are inherited through dominant and recessive patterns. Mutations create genetic variation essential for evolution. Understanding genetics helps us understand heredity, evolution, and genetic diseases!"
-            }
-        };
-
-        let currentLessonKey = null;
-        let currentLessonTitle = null;
-
         function loadLessons() {
             const grid = document.getElementById('lessonsGrid');
-            const completedLessons = getCompletedLessons();
-            
-            grid.innerHTML = lessons.map(lesson => {
-                const lessonKey = `resources_${lesson.id}_${lesson.title}`;
-                const isCompleted = completedLessons.includes(lessonKey);
-                
-                return `
+            grid.innerHTML = lessons.map(lesson => `
                 <div class="lesson-card glass-card p-6 hover:scale-105 transition-transform" style="animation-delay: ${Math.random() * 2}s">
                     <div class="text-5xl mb-4 text-center">${lesson.icon}</div>
                     <h3 class="text-xl font-bold mb-2">${lesson.title}</h3>
                     <div class="flex justify-between items-center mb-3">
                         <span class="text-sm text-[#F5F7FA]/70">${lesson.subject}</span>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: ${getDifficultyColor(lesson.difficulty)}33; color: ${lesson.difficulty === 'Hard' ? '#FFFFFF' : getDifficultyColor(lesson.difficulty)}">
+                        <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: ${getDifficultyColor(lesson.difficulty)}33; color: ${getDifficultyColor(lesson.difficulty)}">
                             ${lesson.difficulty}
                         </span>
                     </div>
-                    ${isCompleted ? '<span class="text-sm text-[#4FC3F7] mb-2 block">✅ Completed</span>' : ''}
-                    <button class="btn-primary w-full" onclick="openLessonModal('${lessonKey}', '${lesson.title}')">${isCompleted ? 'Review Lesson' : 'Start Lesson'}</button>
+                    <button class="btn-primary w-full">Start Lesson</button>
                 </div>
-            `;
-            }).join('');
-        }
-
-        function getCompletedLessons() {
-            const completed = localStorage.getItem('astrolearn_completed_lessons');
-            if (completed) {
-                try {
-                    return JSON.parse(completed);
-                } catch (e) {
-                    console.error('Error parsing completed lessons:', e);
-                }
-            }
-            return [];
-        }
-
-        function openLessonModal(lessonKey, lessonTitle) {
-            currentLessonKey = lessonKey;
-            currentLessonTitle = lessonTitle;
-            
-            const content = lessonContent[lessonTitle];
-            const completedLessons = getCompletedLessons();
-            const isAlreadyCompleted = completedLessons.includes(lessonKey);
-            
-            if (!content) {
-                const defaultContent = {
-                    title: lessonTitle,
-                    introduction: `Welcome to ${lessonTitle}! This lesson will help you learn and understand key concepts. Take your time to read through the material carefully.`,
-                    concepts: [
-                        {
-                            heading: "Introduction to " + lessonTitle,
-                            explanation: "This lesson covers the fundamental concepts of " + lessonTitle + ". Understanding these concepts is essential for building strong knowledge and skills.",
-                            example: "Work through the examples provided to see how these concepts apply in real-world situations."
-                        }
-                    ],
-                    practiceProblems: [
-                        {
-                            problem: "Apply the concepts you've learned about " + lessonTitle + ".",
-                            solution: "Work through the practice step by step, applying the key concepts you've learned in this lesson."
-                        }
-                    ],
-                    summary: "In this lesson, you've explored the fundamentals of " + lessonTitle + ". Continue practicing these concepts and complete this lesson to track your progress!"
-                };
-                displayLessonContent(defaultContent, isAlreadyCompleted);
-            } else {
-                displayLessonContent(content, isAlreadyCompleted);
-            }
-            
-            document.getElementById('lessonModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function displayLessonContent(content, isAlreadyCompleted = false) {
-            const lessonContentDiv = document.getElementById('lessonContent');
-            
-            // Build concepts section
-            const conceptsHTML = content.concepts ? `
-                <div class="mb-6">
-                    <h3 class="text-2xl font-bold mb-4 text-[#4FC3F7]">📝 Lesson Notes & Key Concepts</h3>
-                    ${content.concepts.map((concept, index) => `
-                        <div class="glass-card p-5 mb-4 bg-[#4FC3F7]/10 border border-[#4FC3F7]/30">
-                            <h4 class="text-xl font-bold mb-2 text-[#4FC3F7]">${concept.heading}</h4>
-                            <p class="text-[#F5F7FA]/90 mb-3 leading-relaxed">${concept.explanation}</p>
-                            ${concept.example ? `<div class="bg-[#482880]/30 p-3 rounded border-l-4 border-[#4FC3F7]"><p class="text-[#F5F7FA]/80 italic">Example: ${concept.example}</p></div>` : ''}
-                        </div>
-                    `).join('')}
-                </div>
-            ` : '';
-            
-            // Build practice problems section
-            const practiceHTML = content.practiceProblems ? `
-                <div class="mb-6">
-                    <h3 class="text-2xl font-bold mb-4 text-[#FF6EC7]">💡 Practice Problems</h3>
-                    ${content.practiceProblems.map((problem, index) => `
-                        <div class="glass-card p-5 mb-4 bg-[#FF6EC7]/10 border border-[#FF6EC7]/30">
-                            <p class="text-[#F5F7FA]/90 mb-3 font-semibold">Problem ${index + 1}: ${problem.problem}</p>
-                            <details class="mt-2">
-                                <summary class="cursor-pointer text-[#FF6EC7] font-semibold hover:text-[#FF6EC7]/80">Show Solution</summary>
-                                <div class="mt-2 p-3 bg-[#482880]/30 rounded border-l-4 border-[#FF6EC7]">
-                                    <p class="text-[#F5F7FA]/90">${problem.solution}</p>
-                                </div>
-                            </details>
-                        </div>
-                    `).join('')}
-                </div>
-            ` : '';
-            
-            lessonContentDiv.innerHTML = `
-                <div class="mb-6">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-3xl font-bold mb-4">
-                            <span class="bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
-                                ${content.title}
-                            </span>
-                        </h2>
-                        ${isAlreadyCompleted ? '<span class="text-2xl" title="Lesson Completed">✅</span>' : ''}
-                    </div>
-                    ${content.introduction ? `
-                        <div class="glass-card p-4 bg-[#4FC3F7]/10 border border-[#4FC3F7]/30 mb-4">
-                            <p class="text-[#F5F7FA]/90 leading-relaxed">${content.introduction}</p>
-                        </div>
-                    ` : ''}
-                    ${isAlreadyCompleted ? '<p class="text-sm text-[#4FC3F7] mb-4">You\'ve completed this lesson! Review the content below.</p>' : ''}
-                </div>
-                
-                ${conceptsHTML}
-                
-                ${practiceHTML}
-                
-                ${content.summary ? `
-                    <div class="mb-6">
-                        <h3 class="text-xl font-bold mb-3 text-[#482880]">📋 Lesson Summary</h3>
-                        <div class="glass-card p-5 bg-[#482880]/20 border-2 border-[#482880]/50">
-                            <p class="text-[#F5F7FA]/90 leading-relaxed">${content.summary}</p>
-                        </div>
-                    </div>
-                ` : ''}
-            `;
-            
-            // Update complete button
-            const completeBtn = document.getElementById('completeLessonBtn');
-            if (completeBtn) {
-                if (isAlreadyCompleted) {
-                    completeBtn.textContent = 'Mark as Complete Again';
-                    completeBtn.classList.remove('btn-primary');
-                    completeBtn.classList.add('btn-secondary');
-                } else {
-                    completeBtn.textContent = 'Mark as Complete';
-                    completeBtn.classList.remove('btn-secondary');
-                    completeBtn.classList.add('btn-primary');
-                }
-            }
-        }
-
-        function closeLessonModal() {
-            document.getElementById('lessonModal').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        function completeCurrentLesson() {
-            if (currentLessonKey && currentLessonTitle) {
-                const completed = getCompletedLessons();
-                const isAlreadyCompleted = completed.includes(currentLessonKey);
-                
-                if (!isAlreadyCompleted) {
-                    completed.push(currentLessonKey);
-                    localStorage.setItem('astrolearn_completed_lessons', JSON.stringify(completed));
-                    alert(`Great job! You've completed "${currentLessonTitle}"! 🎉`);
-                    closeLessonModal();
-                    loadLessons(); // Reload to update UI
-                } else {
-                    alert('Lesson already completed! You can review it anytime.');
-                }
-            }
-        }
-
-        // Restart progress - clear all completed lessons
-        // NOTE: Progress is automatically saved and preserved. This function only clears progress when explicitly confirmed by the user.
-        function restartProgress() {
-            const completedLessons = getCompletedLessons();
-            const totalLessons = completedLessons.length;
-            
-            if (totalLessons === 0) {
-                alert('You have no completed lessons to reset.');
-                return;
-            }
-            
-            // Double confirmation for safety
-            const firstConfirm = confirm(
-                `⚠️ WARNING: This will permanently delete all your progress!\n\n` +
-                `You have ${totalLessons} completed lesson${totalLessons !== 1 ? 's' : ''}.\n` +
-                `This will clear all completed lessons.\n\n` +
-                `This action CANNOT be undone!\n\n` +
-                `Are you absolutely sure you want to continue?`
-            );
-            
-            if (!firstConfirm) {
-                return; // User cancelled
-            }
-            
-            // Second confirmation
-            const secondConfirm = confirm(
-                `⚠️ FINAL CONFIRMATION\n\n` +
-                `You are about to permanently delete ${totalLessons} completed lesson${totalLessons !== 1 ? 's' : ''}.\n\n` +
-                `Click OK to confirm, or Cancel to keep your progress.\n\n` +
-                `(Note: Your progress is automatically saved and will be preserved unless you confirm this action.)`
-            );
-            
-            if (secondConfirm) {
-                // Clear completed lessons
-                localStorage.removeItem('astrolearn_completed_lessons');
-                
-                // Reload lessons to update UI
-                loadLessons();
-                
-                // Show feedback
-                const restartBtn = document.getElementById('restartBtn');
-                const originalHTML = restartBtn.innerHTML;
-                restartBtn.innerHTML = '<span>✓</span><span>Progress Reset!</span>';
-                restartBtn.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    restartBtn.innerHTML = originalHTML;
-                    restartBtn.classList.remove('bg-green-500');
-                }, 2000);
-                
-                alert('Your progress has been reset! All completed lessons have been cleared.');
-            }
+            `).join('');
         }
 
         // Get assignments from localStorage or use default
@@ -1234,88 +628,9 @@
             alert('Roadmap download feature coming soon! For now, you can take a screenshot of your roadmap.');
         }
 
-        // Educational Videos Data
-        const educationalVideos = [
-            { id: 1, title: "Introduction to Algebra", subject: "Math", duration: "15:30", thumbnail: "🔭", description: "Learn the basics of algebra and variables" },
-            { id: 2, title: "Cell Biology Explained", subject: "Science", duration: "18:45", thumbnail: "🧬", description: "Understanding cell structure and function" },
-            { id: 3, title: "Reading Comprehension Tips", subject: "Reading", duration: "12:20", thumbnail: "📚", description: "Strategies for better reading comprehension" },
-            { id: 4, title: "Spanish Basics for Beginners", subject: "Language", duration: "20:15", thumbnail: "🌍", description: "Essential Spanish vocabulary and phrases" },
-            { id: 5, title: "Geometry Fundamentals", subject: "Math", duration: "22:10", thumbnail: "🔭", description: "Shapes, angles, and geometric concepts" },
-            { id: 6, title: "Photosynthesis Process", subject: "Science", duration: "16:30", thumbnail: "🧬", description: "How plants convert light into energy" },
-            { id: 7, title: "Literary Analysis Techniques", subject: "Reading", duration: "19:25", thumbnail: "📚", description: "How to analyze literature effectively" },
-            { id: 8, title: "French Conversation Practice", subject: "Language", duration: "17:40", thumbnail: "🌍", description: "Practice speaking French with examples" }
-        ];
-
-        // Downloadable Materials Data
-        const downloadableMaterials = [
-            { id: 1, title: "Math Formula Sheet", type: "PDF", size: "2.5 MB", subject: "Math", icon: "📄" },
-            { id: 2, title: "Science Study Guide", type: "PDF", size: "3.1 MB", subject: "Science", icon: "📄" },
-            { id: 3, title: "Reading Strategies Guide", type: "PDF", size: "1.8 MB", subject: "Reading", icon: "📄" },
-            { id: 4, title: "Language Vocabulary List", type: "PDF", size: "2.2 MB", subject: "Language", icon: "📄" },
-            { id: 5, title: "Practice Problems Set", type: "PDF", size: "4.0 MB", subject: "Math", icon: "📄" },
-            { id: 6, title: "Periodic Table Chart", type: "PDF", size: "1.5 MB", subject: "Science", icon: "📄" },
-            { id: 7, title: "Essay Writing Template", type: "DOCX", size: "0.8 MB", subject: "Reading", icon: "📝" },
-            { id: 8, title: "Grammar Rules Reference", type: "PDF", size: "2.0 MB", subject: "Language", icon: "📄" }
-        ];
-
-        function loadVideos() {
-            const grid = document.getElementById('videosGrid');
-            if (!grid) return;
-            
-            grid.innerHTML = educationalVideos.map(video => `
-                <div class="glass-card p-6 hover:scale-105 transition-transform cursor-pointer" onclick="playVideo('${video.title}')">
-                    <div class="relative mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-[#4FC3F7]/20 to-[#FF6EC7]/20 rounded-lg flex items-center justify-center text-6xl">
-                            ${video.thumbnail}
-                        </div>
-                        <div class="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded text-sm">${video.duration}</div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">${video.title}</h3>
-                    <p class="text-sm text-[#F5F7FA]/70 mb-2">${video.subject}</p>
-                    <p class="text-sm text-[#F5F7FA]/60">${video.description}</p>
-                    <button class="btn-primary w-full mt-4">▶ Watch Video</button>
-                </div>
-            `).join('');
-        }
-
-        function loadDownloadableMaterials() {
-            const grid = document.getElementById('downloadsGrid');
-            if (!grid) return;
-            
-            grid.innerHTML = downloadableMaterials.map(material => `
-                <div class="glass-card p-6 hover:scale-105 transition-transform">
-                    <div class="text-5xl mb-4 text-center">${material.icon}</div>
-                    <h3 class="text-lg font-bold mb-2 text-center">${material.title}</h3>
-                    <div class="text-center mb-4">
-                        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#4FC3F7]/20 text-[#4FC3F7]">${material.type}</span>
-                        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#FF6EC7]/20 text-[#FF6EC7] ml-2">${material.size}</span>
-                    </div>
-                    <p class="text-sm text-[#F5F7FA]/70 mb-4 text-center">${material.subject}</p>
-                    <button class="btn-primary w-full" onclick="downloadMaterial('${material.title}')">📥 Download</button>
-                </div>
-            `).join('');
-        }
-
-        function playVideo(title) {
-            alert(`Playing: ${title}\n\nVideo player would open here. In a full implementation, this would embed a video player.`);
-        }
-
-        function downloadMaterial(title) {
-            alert(`Downloading: ${title}\n\nIn a full implementation, this would download the file.`);
-        }
-
-        function scrollToVideos() {
-            const section = document.getElementById('videosSection');
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             if (isLoggedIn()) {
                 loadLessons();
-                loadVideos();
-                loadDownloadableMaterials();
                 initFloatingStars();
                 
                 // Star Map button functionality
@@ -1323,13 +638,9 @@
                 const closeBtn = document.getElementById('closeStarMap');
                 const closeBtn2 = document.getElementById('closeStarMapBtn');
                 const overlay = document.getElementById('starMapOverlay');
-                const videosBtn = document.getElementById('videosBtn');
                 
                 if (starMapBtn) {
                     starMapBtn.addEventListener('click', openStarMap);
-                }
-                if (videosBtn) {
-                    videosBtn.addEventListener('click', scrollToVideos);
                 }
                 if (closeBtn) {
                     closeBtn.addEventListener('click', closeStarMap);

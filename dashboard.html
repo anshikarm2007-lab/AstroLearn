@@ -15,7 +15,7 @@
     <nav class="navbar">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <img src="sticker.webp" alt="AstroLearn Logo" class="h-8 w-8 object-contain">
+                <span class="text-3xl animate-pulse">⭐</span>
                 <h1 class="text-2xl font-bold bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
                     AstroLearn
                 </h1>
@@ -58,10 +58,6 @@
                         <span>⚙️</span>
                         <span>Change Learning Path</span>
                     </a>
-                    <button onclick="restartProgress()" class="inline-flex items-center gap-2 btn-secondary py-2 px-4 text-sm" id="restartBtn">
-                        <span>↺</span>
-                        <span>Restart Progress</span>
-                    </button>
                     <div id="guestModeBadge" class="hidden inline-flex items-center gap-2 glass-card px-4 py-2 text-sm">
                         <span>🌟</span>
                         <span>Guest Explorer Mode</span>
@@ -84,16 +80,20 @@
 
         <!-- Stats Section -->
         <div class="grid md:grid-cols-3 gap-6 mb-12">
-            <div class="glass-card p-6 text-center">
-                <div class="text-4xl mb-2">⭐</div>
-                <h3 class="text-lg font-bold mb-2">XP Points</h3>
-                <p class="text-3xl font-bold text-[#4FC3F7]" id="xpPoints">0</p>
+            <div class="glass-card p-6">
+                <h3 class="text-lg font-bold mb-4">Fuel Level</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 72%">
+                        <div class="progress-glow"></div>
+                    </div>
+                </div>
+                <p class="text-2xl font-bold mt-2 text-[#4FC3F7]">72%</p>
             </div>
             <div class="glass-card p-6 text-center">
                 <div class="text-4xl mb-2">🎯</div>
                 <h3 class="text-lg font-bold mb-2">Missions Completed</h3>
                 <p class="text-3xl font-bold text-[#FF6EC7]" id="missionsCompletedCount">0</p>
-            </div>
+                        </div>
             <div class="glass-card p-6 text-center">
                 <div class="text-4xl mb-2">🔥</div>
                 <h3 class="text-lg font-bold mb-2">Streak</h3>
@@ -163,7 +163,7 @@
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p class="text-sm text-[#F5F7FA]/70 flex items-center gap-1">Powered by AstroLearn <img src="sticker.webp" alt="AstroLearn Logo" class="h-4 w-4 object-contain inline"></p>
+                    <p class="text-sm text-[#F5F7FA]/70">Powered by AstroLearn ⭐</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="about.html" class="footer-link">About</a>
@@ -260,90 +260,18 @@
             updateNavigation();
         });
 
-        // Calculate total number of completed missions/lessons
-        function calculateTotalCompletedMissions() {
+        // Count total completed missions/lessons
+        function getTotalCompletedMissions() {
             const completedLessons = JSON.parse(localStorage.getItem('astrolearn_completed_lessons') || '[]');
             return completedLessons.length;
         }
 
-        // Update dashboard stats
-        function updateDashboardStats() {
-            // Update missions completed count
-            const missionsCount = document.getElementById('missionsCompletedCount');
-            if (missionsCount) {
-                const totalCompleted = calculateTotalCompletedMissions();
-                missionsCount.textContent = totalCompleted;
-            }
-            
-            // Update XP Points (100 points per completed lesson)
-            const xpPointsElement = document.getElementById('xpPoints');
-            if (xpPointsElement) {
-                const completedLessons = JSON.parse(localStorage.getItem('astrolearn_completed_lessons') || '[]');
-                const totalXP = completedLessons.length * 100;
-                xpPointsElement.textContent = totalXP.toLocaleString();
-            }
-        }
-
-        // Restart progress - clear all completed lessons
-        // NOTE: Progress is automatically saved and preserved. This function only clears progress when explicitly confirmed by the user.
-        function restartProgress() {
-            const completedLessons = JSON.parse(localStorage.getItem('astrolearn_completed_lessons') || '[]');
-            const totalLessons = completedLessons.length;
-            
-            if (totalLessons === 0) {
-                alert('You have no completed lessons to reset.');
-                return;
-            }
-            
-            // Double confirmation for safety
-            const firstConfirm = confirm(
-                `⚠️ WARNING: This will permanently delete all your progress!\n\n` +
-                `You have ${totalLessons} completed lesson${totalLessons !== 1 ? 's' : ''}.\n` +
-                `This will clear:\n` +
-                `• All completed lessons\n` +
-                `• All XP points\n` +
-                `• All mission progress\n\n` +
-                `This action CANNOT be undone!\n\n` +
-                `Are you absolutely sure you want to continue?`
-            );
-            
-            if (!firstConfirm) {
-                return; // User cancelled
-            }
-            
-            // Second confirmation
-            const secondConfirm = confirm(
-                `⚠️ FINAL CONFIRMATION\n\n` +
-                `You are about to permanently delete ${totalLessons} completed lesson${totalLessons !== 1 ? 's' : ''}.\n\n` +
-                `Type "RESET" if you're sure, or click Cancel to keep your progress.\n\n` +
-                `(Note: Your progress is automatically saved and will be preserved unless you confirm this action.)`
-            );
-            
-            if (secondConfirm) {
-                // Clear completed lessons
-                localStorage.removeItem('astrolearn_completed_lessons');
-                
-                // Update dashboard stats
-                updateDashboardStats();
-                
-                // Reload subjects to update progress bars
-                loadSubjects();
-                
-                // Update constellation
-                drawConstellation();
-                
-                // Show feedback
-                const restartBtn = document.getElementById('restartBtn');
-                const originalHTML = restartBtn.innerHTML;
-                restartBtn.innerHTML = '<span>✓</span><span>Progress Reset!</span>';
-                restartBtn.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    restartBtn.innerHTML = originalHTML;
-                    restartBtn.classList.remove('bg-green-500');
-                }, 2000);
-                
-                alert('Your progress has been reset! All completed lessons have been cleared.');
+        // Update missions completed count
+        function updateMissionsCompleted() {
+            const missionsCountElement = document.getElementById('missionsCompletedCount');
+            if (missionsCountElement) {
+                const count = getTotalCompletedMissions();
+                missionsCountElement.textContent = count;
             }
         }
 
@@ -356,40 +284,40 @@
             // Define lessons for each subject by grade (must match exactly with subject pages)
             const lessonsBySubject = {
                 math: {
-                    6: ["Introduction to Fractions", "Decimal Operations", "Basic Geometry Shapes", "Ratios and Proportions", "Percentages", "Area and Perimeter"],
-                    7: ["Integers and Operations", "Expressions and Equations", "Proportional Relationships", "Angle Relationships", "Statistics and Probability", "Surface Area and Volume"],
-                    8: ["Linear Equations", "Systems of Equations", "Functions", "Pythagorean Theorem", "Transformations", "Scientific Notation"],
-                    9: ["Algebra Basics", "Linear Equations and Inequalities", "Quadratic Equations", "Polynomials", "Exponential Functions", "Radical Expressions"],
-                    10: ["Advanced Algebra", "Quadratic Functions", "Polynomial Functions", "Rational Expressions", "Logarithmic Functions", "Sequences and Series"],
-                    11: ["Trigonometry Basics", "Trigonometric Functions", "Trigonometric Identities", "Analytic Geometry", "Complex Numbers", "Conic Sections"],
-                    12: ["Calculus Introduction", "Limits and Continuity", "Derivatives", "Applications of Derivatives", "Integrals", "Applications of Integrals"]
+                    6: ["Introduction to Fractions", "Decimal Operations", "Basic Geometry Shapes", "Ratios and Proportions"],
+                    7: ["Integers and Operations", "Expressions and Equations"],
+                    8: ["Linear Equations", "Systems of Equations"],
+                    9: ["Algebra Basics", "Quadratic Equations"],
+                    10: ["Algebra Basics", "Quadratic Equations"],
+                    11: ["Algebra Basics", "Quadratic Equations"],
+                    12: ["Algebra Basics", "Quadratic Equations"]
                 },
                 science: {
-                    6: ["Introduction to Matter", "Earth's Layers", "Weather and Climate", "Plant Life Cycles", "Simple Machines", "Solar System Basics"],
-                    7: ["Cell Structure", "Ecosystems", "Chemical Reactions", "Forces and Motion", "Energy Transfer", "Earth's Resources"],
-                    8: ["Genetics and Heredity", "Evolution", "Atomic Structure", "Periodic Table", "Waves and Sound", "Light and Optics"],
-                    9: ["Cell Biology", "Photosynthesis", "Genetics", "Chemistry Basics", "Physics Fundamentals", "Astronomy"],
-                    10: ["Advanced Biology", "Organic Chemistry", "Thermodynamics", "Electromagnetism", "Environmental Science", "Molecular Biology"],
-                    11: ["Advanced Chemistry", "Physics: Mechanics", "Physics: Electricity", "Human Anatomy", "Biochemistry", "Quantum Physics"],
-                    12: ["AP Biology", "AP Chemistry", "AP Physics", "Advanced Genetics", "Organic Synthesis", "Astrophysics"]
+                    6: ["Introduction to Matter"],
+                    7: ["Introduction to Matter"],
+                    8: ["Introduction to Matter"],
+                    9: ["Cell Biology", "Genetics"],
+                    10: ["Cell Biology", "Genetics"],
+                    11: ["Cell Biology", "Genetics"],
+                    12: ["Cell Biology", "Genetics"]
                 },
                 reading: {
                     6: ["Basic Reading Comprehension", "Story Elements", "Vocabulary Building", "Main Idea and Details", "Character Analysis", "Reading Strategies"],
                     7: ["Advanced Comprehension", "Literary Devices", "Theme and Symbolism", "Point of View", "Text Structure", "Inference Skills"],
                     8: ["Literary Analysis", "Poetry Analysis", "Author's Purpose", "Textual Evidence", "Comparative Reading", "Critical Thinking"],
-                    9: ["Reading Comprehension", "Literary Analysis", "Poetry Analysis", "Shakespeare Studies", "Modern Literature", "Critical Reading"],
+                    9: ["Reading Comprehension", "Literary Analysis"],
                     10: ["Advanced Literary Analysis", "Rhetorical Analysis", "Classical Literature", "American Literature", "World Literature", "Literary Criticism"],
                     11: ["AP Literature Analysis", "British Literature", "Advanced Poetry", "Drama Analysis", "Literary Theory", "Research and Writing"],
                     12: ["Advanced Literary Theory", "Contemporary Literature", "Postmodern Analysis", "Comparative Literature", "Literary Research Methods", "Thesis Development"]
                 },
                 language: {
-                    6: ["Basic Greetings", "Numbers and Colors", "Family and Friends", "Daily Activities", "Food and Drinks", "Simple Conversations"],
-                    7: ["Present Tense Verbs", "Common Phrases", "Describing People", "School and Hobbies", "Weather and Seasons", "Basic Grammar Rules"],
-                    8: ["Past Tense Introduction", "Future Tense", "Adjectives and Adverbs", "Question Formation", "Travel Vocabulary", "Cultural Context"],
-                    9: ["Spanish Basics", "French Greetings", "German Vocabulary", "Spanish Grammar", "French Conversation", "German Grammar"],
-                    10: ["Advanced Verb Tenses", "Subjunctive Mood", "Complex Sentences", "Idiomatic Expressions", "Literary Analysis", "Advanced Conversation"],
-                    11: ["AP Language Preparation", "Advanced Literature", "Formal Writing", "Cultural Studies", "Translation Skills", "Linguistic Analysis"],
-                    12: ["Advanced Literature", "Thesis Writing", "Literary Criticism", "Advanced Grammar", "Professional Communication", "Research in Language"]
+                    6: ["Spanish Basics", "French Greetings"],
+                    7: ["Spanish Basics", "French Greetings"],
+                    8: ["Spanish Basics", "French Greetings"],
+                    9: ["Spanish Basics", "French Greetings"],
+                    10: ["Spanish Basics", "French Greetings"],
+                    11: ["Spanish Basics", "French Greetings"],
+                    12: ["Spanish Basics", "French Greetings"]
                 }
             };
             
@@ -462,9 +390,6 @@
                 progress: calculateSubjectProgress(subject.id)
             }));
             
-            // Update dashboard stats after calculating subject progress
-            updateDashboardStats();
-            
             grid.innerHTML = subjectsWithProgress.map(subject => `
                 <a href="${subject.link}" class="subject-card-link">
                     <div class="glass-card p-6 text-center hover:scale-105 transition-transform" style="border: 2px solid ${subject.color}33;">
@@ -477,6 +402,9 @@
                     </div>
                 </a>
             `).join('');
+            
+            // Update missions completed count
+            updateMissionsCompleted();
         }
 
         function loadActivity() {
@@ -489,55 +417,22 @@
             `).join('');
         }
 
-        // Generate skill data based on actual mission progress
-        function getSkillData() {
-            const subjectMap = {
-                "Math": "math",
-                "Science": "science",
-                "Reading": "reading",
-                "Language": "language"
-            };
-
-            const baseSkills = [
-                { id: 1, name: "Algebra", subject: "Math", x: 120, y: 100, icon: "🔭" },
-                { id: 2, name: "Geometry", subject: "Math", x: 250, y: 80, icon: "📐" },
-                { id: 3, name: "Calculus", subject: "Math", x: 380, y: 120, icon: "📊" },
-                { id: 4, name: "Biology", subject: "Science", x: 150, y: 200, icon: "🧬" },
-                { id: 5, name: "Chemistry", subject: "Science", x: 280, y: 180, icon: "⚗️" },
-                { id: 6, name: "Physics", subject: "Science", x: 410, y: 200, icon: "🌌" },
-                { id: 7, name: "Reading Comprehension", subject: "Reading", x: 520, y: 100, icon: "📚" },
-                { id: 8, name: "Literary Analysis", subject: "Reading", x: 650, y: 130, icon: "📖" },
-                { id: 9, name: "Spanish", subject: "Language", x: 540, y: 220, icon: "🌍" },
-                { id: 10, name: "French", subject: "Language", x: 680, y: 200, icon: "🗣️" }
-            ];
-
-            // Calculate progress for each skill based on its subject
-            return baseSkills.map(skill => {
-                const subjectId = subjectMap[skill.subject];
-                const progress = calculateSubjectProgress(subjectId);
-                
-                // Determine status based on progress
-                let status = "locked";
-                if (progress >= 80) {
-                    status = "mastered";
-                } else if (progress > 0) {
-                    status = "in-progress";
-                }
-                
-                return {
-                    ...skill,
-                    level: progress,
-                    status: status
-                };
-            });
-        }
+        const skillData = [
+            { id: 1, name: "Algebra", subject: "Math", level: 85, status: "mastered", x: 120, y: 100, icon: "🔭" },
+            { id: 2, name: "Geometry", subject: "Math", level: 70, status: "in-progress", x: 250, y: 80, icon: "📐" },
+            { id: 3, name: "Calculus", subject: "Math", level: 45, status: "in-progress", x: 380, y: 120, icon: "📊" },
+            { id: 4, name: "Biology", subject: "Science", level: 90, status: "mastered", x: 150, y: 200, icon: "🧬" },
+            { id: 5, name: "Chemistry", subject: "Science", level: 60, status: "in-progress", x: 280, y: 180, icon: "⚗️" },
+            { id: 6, name: "Physics", subject: "Science", level: 30, status: "locked", x: 410, y: 200, icon: "🌌" },
+            { id: 7, name: "Reading Comprehension", subject: "Reading", level: 95, status: "mastered", x: 520, y: 100, icon: "📚" },
+            { id: 8, name: "Literary Analysis", subject: "Reading", level: 75, status: "in-progress", x: 650, y: 130, icon: "📖" },
+            { id: 9, name: "Spanish", subject: "Language", level: 55, status: "in-progress", x: 540, y: 220, icon: "🌍" },
+            { id: 10, name: "French", subject: "Language", level: 20, status: "locked", x: 680, y: 200, icon: "🗣️" }
+        ];
 
         function drawConstellation() {
             const map = document.getElementById('constellationMap');
             map.innerHTML = ''; // Clear previous content
-            
-            // Get dynamic skill data based on actual progress
-            const skillData = getSkillData();
             
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('width', '100%');
@@ -729,7 +624,6 @@
 
         function loadSkillLegend() {
             const legend = document.getElementById('skillLegend');
-            const skillData = getSkillData();
             const groupedSkills = {
                 'Math': skillData.filter(s => s.subject === 'Math'),
                 'Science': skillData.filter(s => s.subject === 'Science'),
@@ -782,13 +676,26 @@
             if (isLoggedIn()) {
                 loadSubjects();
                 loadActivity();
-                // Update constellation when subjects are loaded (to ensure progress is calculated)
-                setTimeout(() => {
-                    drawConstellation();
-                    loadSkillLegend();
-                }, 100);
+                drawConstellation();
+                loadSkillLegend();
+                updateMissionsCompleted();
                 initFloatingStars();
-                updateDashboardStats();
+            }
+        });
+        
+        // Listen for storage changes to update missions count when lessons are completed on other pages
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'astrolearn_completed_lessons') {
+                updateMissionsCompleted();
+                loadSubjects(); // Also update subject progress
+            }
+        });
+        
+        // Also update when page becomes visible (in case user completed lessons in another tab)
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                updateMissionsCompleted();
+                loadSubjects();
             }
         });
     </script>

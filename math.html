@@ -15,7 +15,7 @@
     <nav class="navbar">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <img src="sticker.webp" alt="AstroLearn Logo" class="h-8 w-8 object-contain">
+                <span class="text-3xl animate-pulse">⭐</span>
                 <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
                     AstroLearn
                 </a>
@@ -51,9 +51,9 @@
             </h1>
             <p class="text-xl text-[#F5F7FA]/80">Master the universe of numbers and equations</p>
             <div class="mt-4 inline-flex items-center gap-3 glass-card px-4 py-2">
-                <p class="text-sm text-[#F5F7FA]">
-                    <span class="font-bold text-white text-base">Grade Level:</span> 
-                    <select id="gradeSelector" class="bg-[#0B0F2F]/95 border border-[#4FC3F7]/30 text-[#F5F7FA] font-bold cursor-pointer focus:outline-none focus:border-[#4FC3F7] rounded px-2 py-1 ml-2">
+                <p class="text-sm text-[#F5F7FA]/70">
+                    <span class="font-semibold text-[#4FC3F7]">Grade Level:</span> 
+                    <select id="gradeSelector" class="bg-transparent border-none text-[#F5F7FA] font-bold cursor-pointer focus:outline-none ml-2">
                         <option value="6">6th</option>
                         <option value="7">7th</option>
                         <option value="8">8th</option>
@@ -137,7 +137,7 @@
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p class="text-sm text-[#F5F7FA]/70 flex items-center gap-1">Powered by AstroLearn <img src="sticker.webp" alt="AstroLearn Logo" class="h-4 w-4 object-contain inline"></p>
+                    <p class="text-sm text-[#F5F7FA]/70">Powered by AstroLearn ⭐</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="about.html" class="footer-link">About</a>
@@ -420,98 +420,6 @@
                             }
                         ],
                         summary: "Ratios compare two quantities and can be simplified. Proportions are equations showing two equal ratios. Use cross multiplication to solve proportions. Ratios and proportions are essential for scaling, conversions, and solving real-world problems!"
-                    },
-                    "Percentages": {
-                        title: "Percentages",
-                        introduction: "Percentages are everywhere in daily life - from sales discounts to test scores! A percentage is a way to express a part of a whole as a fraction of 100. Understanding percentages helps you make sense of the world around you.",
-                        concepts: [
-                            {
-                                heading: "What is a Percentage?",
-                                explanation: "A percentage is a fraction with a denominator of 100. The word 'percent' means 'per hundred' or 'out of 100'. So 50% means 50 out of 100, which is the same as 1/2 or 0.5. Percentages make it easy to compare different quantities.",
-                                example: "If you score 85% on a test, you got 85 out of 100 questions correct, or 85/100 = 0.85 = 17/20"
-                            },
-                            {
-                                heading: "Converting Between Percentages, Decimals, and Fractions",
-                                explanation: "To convert a percentage to a decimal, divide by 100 (move decimal point 2 places left). To convert a decimal to a percentage, multiply by 100 (move decimal point 2 places right). To convert a fraction to a percentage, divide numerator by denominator, then multiply by 100.",
-                                example: "50% = 0.50 = 1/2. 0.75 = 75% = 3/4. 1/4 = 0.25 = 25%"
-                            },
-                            {
-                                heading: "Finding a Percentage of a Number",
-                                explanation: "To find a percentage of a number, convert the percentage to a decimal and multiply. Or use the formula: (percentage/100) × number. This tells you what part of the whole number the percentage represents.",
-                                example: "20% of 50 = 0.20 × 50 = 10. Or: (20/100) × 50 = 10"
-                            },
-                            {
-                                heading: "Finding What Percentage One Number Is of Another",
-                                explanation: "To find what percentage one number is of another, divide the part by the whole, then multiply by 100. This tells you what portion the first number represents out of the second.",
-                                example: "What percentage is 15 of 60? (15/60) × 100 = 0.25 × 100 = 25%"
-                            },
-                            {
-                                heading: "Percentage Increase and Decrease",
-                                explanation: "To find percentage increase: ((new - old) / old) × 100. To find percentage decrease: ((old - new) / old) × 100. Positive result means increase, negative means decrease.",
-                                example: "If price goes from $50 to $60: ((60-50)/50) × 100 = 20% increase. If it goes from $60 to $50: ((60-50)/60) × 100 = 16.67% decrease"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Convert 75% to a decimal and fraction",
-                                solution: "0.75 and 3/4 (75% = 75/100 = 0.75 = 3/4)"
-                            },
-                            {
-                                problem: "What is 30% of 80?",
-                                solution: "24 (0.30 × 80 = 24)"
-                            },
-                            {
-                                problem: "What percentage is 12 of 48?",
-                                solution: "25% ((12/48) × 100 = 25%)"
-                            }
-                        ],
-                        summary: "Percentages represent parts out of 100. Convert between percentages, decimals, and fractions easily. Find percentages of numbers by multiplying. Calculate percentage changes to understand increases and decreases. Percentages are essential for understanding discounts, interest, statistics, and more!"
-                    },
-                    "Area and Perimeter": {
-                        title: "Area and Perimeter",
-                        introduction: "Area and perimeter are fundamental concepts in geometry! Perimeter is the distance around a shape, while area is the space inside a shape. Understanding these helps you measure real-world spaces and solve practical problems.",
-                        concepts: [
-                            {
-                                heading: "What is Perimeter?",
-                                explanation: "Perimeter is the total distance around the outside of a shape. To find the perimeter, add up all the side lengths. For rectangles, perimeter = 2(length + width). For squares, perimeter = 4 × side length. Think of it as the fence around a yard.",
-                                example: "A rectangle with length 5 cm and width 3 cm has perimeter = 2(5 + 3) = 2(8) = 16 cm"
-                            },
-                            {
-                                heading: "What is Area?",
-                                explanation: "Area is the amount of space inside a shape, measured in square units. For rectangles, area = length × width. For squares, area = side × side = side². Think of it as how many square tiles would fit inside the shape.",
-                                example: "A rectangle with length 5 cm and width 3 cm has area = 5 × 3 = 15 cm²"
-                            },
-                            {
-                                heading: "Area of Triangles",
-                                explanation: "The area of a triangle = (1/2) × base × height. The base is any side, and the height is the perpendicular distance from the base to the opposite vertex. Remember: height must be perpendicular (at a 90° angle) to the base.",
-                                example: "A triangle with base 6 cm and height 4 cm has area = (1/2) × 6 × 4 = 12 cm²"
-                            },
-                            {
-                                heading: "Area of Circles",
-                                explanation: "The area of a circle = π × radius² (or πr²). π (pi) is approximately 3.14. The radius is the distance from the center to the edge. Remember: radius² means radius × radius, not radius × 2!",
-                                example: "A circle with radius 5 cm has area = π × 5² = π × 25 ≈ 3.14 × 25 ≈ 78.5 cm²"
-                            },
-                            {
-                                heading: "Perimeter vs Area",
-                                explanation: "Perimeter is one-dimensional (length), measured in units like cm, m, ft. Area is two-dimensional (length × width), measured in square units like cm², m², ft². Don't confuse them - they measure different things!",
-                                example: "A 4 cm × 4 cm square has perimeter = 16 cm (distance around) and area = 16 cm² (space inside)"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Find the perimeter and area of a rectangle with length 8 m and width 5 m",
-                                solution: "Perimeter = 2(8 + 5) = 26 m. Area = 8 × 5 = 40 m²"
-                            },
-                            {
-                                problem: "Find the area of a triangle with base 10 cm and height 6 cm",
-                                solution: "Area = (1/2) × 10 × 6 = 30 cm²"
-                            },
-                            {
-                                problem: "Find the area of a circle with radius 3 cm (use π ≈ 3.14)",
-                                solution: "Area = π × 3² = π × 9 ≈ 3.14 × 9 ≈ 28.26 cm²"
-                            }
-                        ],
-                        summary: "Perimeter is the distance around a shape (add all sides). Area is the space inside (length × width for rectangles, special formulas for other shapes). Remember units: perimeter in cm/m, area in cm²/m². These concepts are essential for measuring real-world spaces!"
                     }
                 }
             },
@@ -608,180 +516,6 @@
                             }
                         ],
                         summary: "Expressions are mathematical phrases (no equals sign) that can be simplified. Equations have an equals sign and can be solved. Use inverse operations to solve equations. Always do the same operation to both sides. Check your answer by substituting back. Mastering expressions and equations opens the door to algebra!"
-                    },
-                    "Proportional Relationships": {
-                        title: "Proportional Relationships",
-                        introduction: "Proportional relationships are everywhere! When two quantities change together in a constant ratio, they have a proportional relationship. Understanding proportions helps you solve real-world problems involving scaling, rates, and comparisons.",
-                        concepts: [
-                            {
-                                heading: "What is a Proportional Relationship?",
-                                explanation: "A proportional relationship means two quantities always change by the same factor. If one doubles, the other doubles. If one triples, the other triples. The ratio between them stays constant. This creates a straight line through the origin when graphed.",
-                                example: "If 2 apples cost $1, then 4 apples cost $2, 6 apples cost $3. The ratio (price/apples) is always 0.5, so price and apples are proportional."
-                            },
-                            {
-                                heading: "Constant of Proportionality",
-                                explanation: "The constant of proportionality (k) is the ratio between two proportional quantities. It's found by dividing y by x: k = y/x. This constant tells you how much y changes for every unit change in x.",
-                                example: "If y = 3x, then k = 3. For every 1 unit increase in x, y increases by 3 units."
-                            },
-                            {
-                                heading: "Graphing Proportional Relationships",
-                                explanation: "Proportional relationships graph as straight lines that pass through the origin (0, 0). The slope of the line equals the constant of proportionality. The equation is y = kx, where k is the constant.",
-                                example: "If y = 2x, the graph is a line through (0,0) with slope 2. Points include (0,0), (1,2), (2,4), (3,6)."
-                            },
-                            {
-                                heading: "Solving Proportional Problems",
-                                explanation: "To solve proportional problems, set up a proportion: a/b = c/d. Cross multiply to solve: ad = bc. Make sure units match and the relationship is truly proportional.",
-                                example: "If 3 books cost $15, how much do 5 books cost? 3/15 = 5/x, so 3x = 75, x = $25"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "If y = 4x, what is the constant of proportionality?",
-                                solution: "k = 4 (the coefficient of x)"
-                            },
-                            {
-                                problem: "If 5 pencils cost $2, how much do 15 pencils cost?",
-                                solution: "$6 (set up proportion: 5/2 = 15/x, so 5x = 30, x = 6)"
-                            },
-                            {
-                                problem: "Does the point (2, 6) lie on the proportional relationship y = 3x?",
-                                solution: "Yes! 6 = 3(2) = 6 ✓"
-                            }
-                        ],
-                        summary: "Proportional relationships have a constant ratio. They graph as lines through the origin. The constant of proportionality (k) is y/x. Use proportions to solve scaling and rate problems. Proportional relationships model many real-world situations!"
-                    },
-                    "Angle Relationships": {
-                        title: "Angle Relationships",
-                        introduction: "Angles are everywhere in geometry! Understanding how angles relate to each other helps you solve problems and understand shapes. Let's explore the relationships between angles.",
-                        concepts: [
-                            {
-                                heading: "Complementary Angles",
-                                explanation: "Two angles are complementary if their measures add up to 90°. They don't have to be next to each other - they just need to sum to 90°. Complementary angles form a right angle when combined.",
-                                example: "If one angle is 30°, its complement is 60° (30° + 60° = 90°)"
-                            },
-                            {
-                                heading: "Supplementary Angles",
-                                explanation: "Two angles are supplementary if their measures add up to 180°. They form a straight line when combined. Adjacent supplementary angles form a linear pair.",
-                                example: "If one angle is 120°, its supplement is 60° (120° + 60° = 180°)"
-                            },
-                            {
-                                heading: "Vertical Angles",
-                                explanation: "Vertical angles are opposite angles formed when two lines intersect. They are always equal to each other. Vertical angles share a vertex but are not adjacent.",
-                                example: "When two lines cross, the angles opposite each other are equal. If one vertical angle is 50°, the other is also 50°."
-                            },
-                            {
-                                heading: "Adjacent Angles",
-                                explanation: "Adjacent angles share a common side and vertex but don't overlap. They are next to each other. Adjacent angles can be complementary, supplementary, or neither.",
-                                example: "Two angles that share a side and vertex, like angles on either side of a line, are adjacent."
-                            },
-                            {
-                                heading: "Angles in Triangles",
-                                explanation: "The sum of all three angles in any triangle is always 180°. This is true for all triangles - equilateral, isosceles, scalene, right, acute, or obtuse. Use this to find missing angles.",
-                                example: "If a triangle has angles 60° and 80°, the third angle is 180° - 60° - 80° = 40°"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "If two angles are complementary and one is 35°, what is the other?",
-                                solution: "55° (90° - 35° = 55°)"
-                            },
-                            {
-                                problem: "If two angles are supplementary and one is 110°, what is the other?",
-                                solution: "70° (180° - 110° = 70°)"
-                            },
-                            {
-                                problem: "In a triangle, two angles are 50° and 70°. What is the third angle?",
-                                solution: "60° (180° - 50° - 70° = 60°)"
-                            }
-                        ],
-                        summary: "Complementary angles sum to 90°. Supplementary angles sum to 180°. Vertical angles are equal. Adjacent angles share a side and vertex. Triangle angles sum to 180°. Understanding these relationships helps solve geometry problems!"
-                    },
-                    "Statistics and Probability": {
-                        title: "Statistics and Probability",
-                        introduction: "Statistics and probability help us understand data and make predictions! Statistics involves collecting, organizing, and analyzing data. Probability tells us how likely events are to happen.",
-                        concepts: [
-                            {
-                                heading: "Mean, Median, and Mode",
-                                explanation: "Mean (average) = sum of all values ÷ number of values. Median = middle value when data is ordered. Mode = most frequent value. These measures help describe the center of data.",
-                                example: "Data: 3, 5, 5, 7, 9. Mean = (3+5+5+7+9)/5 = 5.8. Median = 5 (middle). Mode = 5 (appears twice)"
-                            },
-                            {
-                                heading: "Probability Basics",
-                                explanation: "Probability measures how likely an event is, from 0 (impossible) to 1 (certain). Probability = favorable outcomes / total possible outcomes. It's often written as a fraction, decimal, or percentage.",
-                                example: "Probability of rolling a 3 on a die = 1/6 (one favorable outcome out of 6 possible)"
-                            },
-                            {
-                                heading: "Experimental vs Theoretical Probability",
-                                explanation: "Theoretical probability is calculated from known possibilities. Experimental probability comes from actual trials/experiments. As you do more trials, experimental probability gets closer to theoretical.",
-                                example: "Theoretical: P(heads) = 1/2. Experimental: Flip 100 times, get 48 heads, so P = 48/100 = 0.48"
-                            },
-                            {
-                                heading: "Simple Events",
-                                explanation: "A simple event has a single outcome. The probability of a simple event = 1 / total outcomes. For equally likely outcomes, each has the same probability.",
-                                example: "Picking one card from a deck: P(ace) = 4/52 = 1/13 (4 aces out of 52 cards)"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Find the mean of: 10, 15, 20, 25, 30",
-                                solution: "20 ((10+15+20+25+30)/5 = 100/5 = 20)"
-                            },
-                            {
-                                problem: "What is the probability of rolling an even number on a die?",
-                                solution: "1/2 or 0.5 (even numbers are 2, 4, 6, so 3 out of 6 outcomes)"
-                            },
-                            {
-                                problem: "If you flip a coin 50 times and get 27 heads, what is the experimental probability?",
-                                solution: "27/50 = 0.54 or 54%"
-                            }
-                        ],
-                        summary: "Mean, median, and mode describe data centers. Probability ranges from 0 to 1. Calculate probability as favorable/total outcomes. Experimental probability comes from trials. Statistics and probability help us understand and predict events!"
-                    },
-                    "Surface Area and Volume": {
-                        title: "Surface Area and Volume",
-                        introduction: "Surface area and volume measure 3D shapes! Surface area is the total area of all faces (like wrapping paper needed). Volume is the space inside (like how much water fits). These concepts are essential for real-world applications!",
-                        concepts: [
-                            {
-                                heading: "Surface Area of Rectangular Prisms",
-                                explanation: "Surface area = sum of areas of all 6 faces. For a rectangular prism: SA = 2(lw + lh + wh), where l=length, w=width, h=height. Each pair of opposite faces has the same area.",
-                                example: "A box 4×3×2: SA = 2(4×3 + 4×2 + 3×2) = 2(12 + 8 + 6) = 2(26) = 52 square units"
-                            },
-                            {
-                                heading: "Volume of Rectangular Prisms",
-                                explanation: "Volume = length × width × height, or V = lwh. Volume measures 3D space in cubic units. Think: how many unit cubes fit inside?",
-                                example: "A box 4×3×2: V = 4 × 3 × 2 = 24 cubic units"
-                            },
-                            {
-                                heading: "Surface Area of Cylinders",
-                                explanation: "Cylinder SA = 2πr² + 2πrh, where r=radius, h=height. The first part (2πr²) is the two circular bases. The second part (2πrh) is the curved surface (unrolls to a rectangle).",
-                                example: "Cylinder with r=3, h=5: SA = 2π(3)² + 2π(3)(5) = 18π + 30π = 48π ≈ 150.8 square units"
-                            },
-                            {
-                                heading: "Volume of Cylinders",
-                                explanation: "Cylinder volume = πr²h, where r=radius, h=height. This is the area of the base (circle) times the height. Think of stacking circular layers.",
-                                example: "Cylinder with r=3, h=5: V = π(3)²(5) = 45π ≈ 141.4 cubic units"
-                            },
-                            {
-                                heading: "Surface Area vs Volume",
-                                explanation: "Surface area is 2D (square units) - measures the outside. Volume is 3D (cubic units) - measures the inside. They measure different things! A larger volume doesn't always mean larger surface area.",
-                                example: "A thin box might have large surface area but small volume. A sphere has the smallest surface area for a given volume."
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Find the volume of a rectangular prism with length 5, width 4, height 3",
-                                solution: "60 cubic units (5 × 4 × 3 = 60)"
-                            },
-                            {
-                                problem: "Find the surface area of a cube with side length 4",
-                                solution: "96 square units (6 faces, each 4×4=16, so 6×16=96)"
-                            },
-                            {
-                                problem: "Find the volume of a cylinder with radius 2 and height 6 (use π ≈ 3.14)",
-                                solution: "75.36 cubic units (π × 2² × 6 = 24π ≈ 75.36)"
-                            }
-                        ],
-                        summary: "Surface area measures the outside (square units). Volume measures the inside (cubic units). Rectangular prisms: SA = 2(lw+lh+wh), V = lwh. Cylinders: SA = 2πr² + 2πrh, V = πr²h. These concepts are essential for packaging, construction, and design!"
                     }
                 }
             },
@@ -878,190 +612,6 @@
                             }
                         ],
                         summary: "Systems of equations have two or more equations with the same variables. The solution is where they intersect. Solve by graphing, substitution, or elimination. Systems can have one solution, no solution, or infinitely many solutions. Systems help solve real-world problems with multiple conditions!"
-                    },
-                    "Functions": {
-                        title: "Functions",
-                        introduction: "Functions are special relationships where each input has exactly one output! They're like machines: you put something in, and you get something specific out. Functions are fundamental to algebra and appear everywhere in mathematics.",
-                        concepts: [
-                            {
-                                heading: "What is a Function?",
-                                explanation: "A function is a relationship where each input (x-value) has exactly one output (y-value). If you put the same input in twice, you always get the same output. Functions can be represented as equations, graphs, tables, or mappings.",
-                                example: "y = 2x + 3 is a function. For input x = 1, output y = 5. For x = 2, y = 7. Each x gives exactly one y."
-                            },
-                            {
-                                heading: "Function Notation",
-                                explanation: "Functions are written as f(x) instead of y. f(x) means 'f of x' or 'the function f evaluated at x'. f(2) means 'find the output when input is 2'. This notation makes it clear which function you're using.",
-                                example: "If f(x) = 2x + 3, then f(1) = 2(1) + 3 = 5, and f(4) = 2(4) + 3 = 11"
-                            },
-                            {
-                                heading: "Domain and Range",
-                                explanation: "Domain is all possible input values (x-values). Range is all possible output values (y-values). The domain is what you can put in, the range is what you can get out.",
-                                example: "For f(x) = x², domain is all real numbers, range is all non-negative numbers (y ≥ 0)"
-                            },
-                            {
-                                heading: "Vertical Line Test",
-                                explanation: "A graph represents a function if and only if any vertical line touches the graph at most once. If a vertical line touches the graph twice, it's not a function (one input would have two outputs).",
-                                example: "A parabola opening up or down passes the vertical line test (is a function). A circle fails the test (is not a function)."
-                            },
-                            {
-                                heading: "Linear Functions",
-                                explanation: "Linear functions have the form f(x) = mx + b, where m is the slope and b is the y-intercept. They graph as straight lines. The rate of change is constant (slope m).",
-                                example: "f(x) = 2x + 1 is linear with slope 2 and y-intercept 1. It's a straight line."
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "If f(x) = 3x - 2, find f(4)",
-                                solution: "10 (f(4) = 3(4) - 2 = 12 - 2 = 10)"
-                            },
-                            {
-                                problem: "What is the domain of f(x) = 1/x?",
-                                solution: "All real numbers except 0 (can't divide by zero)"
-                            },
-                            {
-                                problem: "Does the graph of a circle represent a function?",
-                                solution: "No - a vertical line can intersect a circle twice, so it fails the vertical line test"
-                            }
-                        ],
-                        summary: "Functions have exactly one output for each input. Use function notation f(x). Domain is inputs, range is outputs. Use vertical line test to check if a graph is a function. Linear functions are f(x) = mx + b. Functions model relationships and are essential in mathematics!"
-                    },
-                    "Pythagorean Theorem": {
-                        title: "Pythagorean Theorem",
-                        introduction: "The Pythagorean Theorem is one of the most famous theorems in mathematics! It relates the sides of right triangles and helps us solve countless geometry problems. It's been used for thousands of years!",
-                        concepts: [
-                            {
-                                heading: "What is the Pythagorean Theorem?",
-                                explanation: "In a right triangle, the square of the hypotenuse (longest side, opposite the right angle) equals the sum of squares of the other two sides. Formula: a² + b² = c², where c is the hypotenuse and a, b are the legs.",
-                                example: "If legs are 3 and 4, then 3² + 4² = 9 + 16 = 25 = c², so c = 5"
-                            },
-                            {
-                                heading: "Finding the Hypotenuse",
-                                explanation: "When you know both legs, find the hypotenuse: c = √(a² + b²). Square both legs, add them, then take the square root.",
-                                example: "Legs 6 and 8: c = √(6² + 8²) = √(36 + 64) = √100 = 10"
-                            },
-                            {
-                                heading: "Finding a Leg",
-                                explanation: "When you know the hypotenuse and one leg, find the other leg: a = √(c² - b²). Square the hypotenuse, subtract the square of the known leg, then take the square root.",
-                                example: "Hypotenuse 13, leg 5: other leg = √(13² - 5²) = √(169 - 25) = √144 = 12"
-                            },
-                            {
-                                heading: "Pythagorean Triples",
-                                explanation: "Pythagorean triples are sets of three whole numbers that satisfy a² + b² = c². Common triples: (3, 4, 5), (5, 12, 13), (8, 15, 17). Multiples of these also work: (6, 8, 10) is 2×(3, 4, 5).",
-                                example: "3² + 4² = 9 + 16 = 25 = 5², so (3, 4, 5) is a Pythagorean triple"
-                            },
-                            {
-                                heading: "Applications",
-                                explanation: "The Pythagorean Theorem is used in construction, navigation, computer graphics, and many real-world problems. It helps find distances, check if corners are square, and solve 3D problems.",
-                                example: "To find distance between (0,0) and (3,4): distance = √(3² + 4²) = 5 units"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Find the hypotenuse of a right triangle with legs 5 and 12",
-                                solution: "13 (5² + 12² = 25 + 144 = 169, so c = √169 = 13)"
-                            },
-                            {
-                                problem: "Find the missing leg if hypotenuse is 10 and one leg is 6",
-                                solution: "8 (leg = √(10² - 6²) = √(100 - 36) = √64 = 8)"
-                            },
-                            {
-                                problem: "Is (7, 24, 25) a Pythagorean triple?",
-                                solution: "Yes! 7² + 24² = 49 + 576 = 625 = 25²"
-                            }
-                        ],
-                        summary: "Pythagorean Theorem: a² + b² = c² for right triangles. Use it to find missing sides. Common triples: (3,4,5), (5,12,13). The theorem is essential for geometry, construction, and distance calculations!"
-                    },
-                    "Transformations": {
-                        title: "Transformations",
-                        introduction: "Transformations move, flip, or change shapes! They're like moving furniture around or looking in a mirror. Understanding transformations helps you understand symmetry, congruence, and how shapes relate to each other.",
-                        concepts: [
-                            {
-                                heading: "Types of Transformations",
-                                explanation: "Four main types: Translation (slide), Rotation (turn), Reflection (flip), Dilation (resize). Translations, rotations, and reflections preserve size and shape. Dilations change size but keep shape.",
-                                example: "Translation: slide a shape 3 units right. Rotation: turn 90° clockwise. Reflection: flip over a line. Dilation: make 2× bigger."
-                            },
-                            {
-                                heading: "Translation",
-                                explanation: "Translation slides a shape without rotating or flipping it. Every point moves the same distance in the same direction. Use (x, y) → (x + a, y + b) where (a, b) is the translation vector.",
-                                example: "Translate (2, 3) by (4, -1): new point is (2+4, 3-1) = (6, 2)"
-                            },
-                            {
-                                heading: "Rotation",
-                                explanation: "Rotation turns a shape around a point (center of rotation). Common rotations: 90°, 180°, 270°. Positive angles rotate counterclockwise. Rotations preserve distance and angles.",
-                                example: "Rotate (3, 4) 90° counterclockwise around origin: becomes (-4, 3)"
-                            },
-                            {
-                                heading: "Reflection",
-                                explanation: "Reflection flips a shape over a line (line of reflection). Points on the line stay put. Other points flip to the opposite side at the same distance. Reflections create mirror images.",
-                                example: "Reflect (3, 4) over x-axis: becomes (3, -4). Over y-axis: becomes (-3, 4)"
-                            },
-                            {
-                                heading: "Dilation",
-                                explanation: "Dilation resizes a shape from a center point. Scale factor > 1 makes bigger, < 1 makes smaller. Multiply coordinates by scale factor. Dilations preserve angles but change distances.",
-                                example: "Dilate (2, 3) by factor 2 from origin: becomes (4, 6)"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Translate the point (5, 2) by (3, -4)",
-                                solution: "(8, -2) (5+3, 2-4)"
-                            },
-                            {
-                                problem: "Reflect (4, 5) over the x-axis",
-                                solution: "(4, -5) (x stays same, y changes sign)"
-                            },
-                            {
-                                problem: "Dilate (3, 6) by scale factor 1/2",
-                                solution: "(1.5, 3) (multiply both coordinates by 0.5)"
-                            }
-                        ],
-                        summary: "Transformations move or change shapes. Translation slides, rotation turns, reflection flips, dilation resizes. Translations, rotations, and reflections preserve size. Dilations change size. Transformations help understand symmetry and congruence!"
-                    },
-                    "Scientific Notation": {
-                        title: "Scientific Notation",
-                        introduction: "Scientific notation makes huge and tiny numbers manageable! It's used in science, engineering, and anywhere you deal with very large or very small numbers. It's a powerful way to write numbers efficiently.",
-                        concepts: [
-                            {
-                                heading: "What is Scientific Notation?",
-                                explanation: "Scientific notation writes numbers as a × 10ⁿ, where 1 ≤ a < 10 and n is an integer. The first part (a) is between 1 and 10. The second part (10ⁿ) shows how many places to move the decimal.",
-                                example: "3,500 = 3.5 × 10³. 0.0042 = 4.2 × 10⁻³"
-                            },
-                            {
-                                heading: "Converting to Scientific Notation",
-                                explanation: "1) Move decimal so one digit is left of it. 2) Count places moved. 3) If moved left, exponent is positive. If moved right, exponent is negative. 4) Write as a × 10ⁿ where a is the new number and n is places moved.",
-                                example: "45,000: move decimal 4 places left → 4.5 × 10⁴. 0.003: move decimal 3 places right → 3 × 10⁻³"
-                            },
-                            {
-                                heading: "Converting from Scientific Notation",
-                                explanation: "Use the exponent to move the decimal. Positive exponent: move right. Negative exponent: move left. Add zeros as needed.",
-                                example: "3.2 × 10⁵: move decimal 5 right → 320,000. 2.5 × 10⁻³: move 3 left → 0.0025"
-                            },
-                            {
-                                heading: "Multiplying in Scientific Notation",
-                                explanation: "Multiply the coefficients (the numbers), then add the exponents. (a × 10ⁿ)(b × 10ᵐ) = (ab) × 10ⁿ⁺ᵐ. Adjust if the product coefficient is ≥ 10.",
-                                example: "(2 × 10³)(3 × 10⁴) = 6 × 10⁷. (5 × 10²)(4 × 10⁵) = 20 × 10⁷ = 2 × 10⁸"
-                            },
-                            {
-                                heading: "Dividing in Scientific Notation",
-                                explanation: "Divide the coefficients, then subtract the exponents. (a × 10ⁿ) ÷ (b × 10ᵐ) = (a/b) × 10ⁿ⁻ᵐ. Adjust if the quotient coefficient is < 1.",
-                                example: "(6 × 10⁸) ÷ (2 × 10³) = 3 × 10⁵. (4 × 10²) ÷ (8 × 10⁵) = 0.5 × 10⁻³ = 5 × 10⁻⁴"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Write 7,200,000 in scientific notation",
-                                solution: "7.2 × 10⁶ (move decimal 6 places left)"
-                            },
-                            {
-                                problem: "Write 0.00045 in scientific notation",
-                                solution: "4.5 × 10⁻⁴ (move decimal 4 places right)"
-                            },
-                            {
-                                problem: "Multiply: (3 × 10⁴)(2 × 10⁵)",
-                                solution: "6 × 10⁹ (3×2=6, 4+5=9)"
-                            }
-                        ],
-                        summary: "Scientific notation: a × 10ⁿ where 1 ≤ a < 10. Positive exponent = large number, negative = small. Move decimal to convert. Multiply coefficients and add exponents. Divide coefficients and subtract exponents. Essential for science and engineering!"
                     }
                 }
             },
@@ -1153,185 +703,6 @@
                             }
                         ],
                         summary: "Quadratic equations have the form ax² + bx + c = 0. They can be solved by factoring or using the quadratic formula. The discriminant tells us how many solutions exist. Quadratics create parabolas and model many real-world situations like projectile motion!"
-                    },
-                    "Linear Equations and Inequalities": {
-                        title: "Linear Equations and Inequalities",
-                        introduction: "Linear equations and inequalities are powerful tools for solving problems! While equations show equality, inequalities show relationships like 'greater than' or 'less than'. Both are essential for modeling real-world situations.",
-                        concepts: [
-                            {
-                                heading: "Solving Linear Inequalities",
-                                explanation: "Solve inequalities like equations, but remember: if you multiply or divide by a negative number, flip the inequality sign! This is crucial - forgetting to flip the sign is a common mistake.",
-                                example: "Solve -2x > 6: Divide by -2 and flip sign: x < -3. If you forgot to flip, you'd get wrong answer x > -3"
-                            },
-                            {
-                                heading: "Graphing Inequalities",
-                                explanation: "Graph inequalities on a number line. Use open circle (○) for < or >, closed circle (●) for ≤ or ≥. Shade the side that makes the inequality true. For two-variable inequalities, shade the region.",
-                                example: "x > 3: open circle at 3, shade right. x ≤ -2: closed circle at -2, shade left"
-                            },
-                            {
-                                heading: "Compound Inequalities",
-                                explanation: "Compound inequalities combine two inequalities with 'and' or 'or'. 'And' means both must be true (overlap). 'Or' means either can be true (union). Graph each part, then combine.",
-                                example: "-2 < x ≤ 5 means x > -2 AND x ≤ 5. Graph both and find overlap."
-                            },
-                            {
-                                heading: "Applications",
-                                explanation: "Inequalities model real-world constraints: budgets, limits, ranges. Set up the inequality from the problem, solve, and interpret in context.",
-                                example: "If you have $50 and items cost $8 each: 8x ≤ 50, so x ≤ 6.25, meaning you can buy at most 6 items"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Solve: 3x + 5 < 14",
-                                solution: "x < 3 (subtract 5: 3x < 9, divide by 3: x < 3)"
-                            },
-                            {
-                                problem: "Solve: -4x ≥ 12",
-                                solution: "x ≤ -3 (divide by -4 and flip sign: x ≤ -3)"
-                            },
-                            {
-                                problem: "Graph: -1 ≤ x < 4",
-                                solution: "Closed circle at -1, open circle at 4, shade between them"
-                            }
-                        ],
-                        summary: "Solve inequalities like equations, but flip the sign when multiplying/dividing by negative. Graph with open/closed circles and shading. Compound inequalities use 'and' (overlap) or 'or' (union). Inequalities model real-world constraints!"
-                    },
-                    "Polynomials": {
-                        title: "Polynomials",
-                        introduction: "Polynomials are expressions with multiple terms! They're like building blocks of algebra. Understanding polynomials helps you work with more complex equations and functions.",
-                        concepts: [
-                            {
-                                heading: "What is a Polynomial?",
-                                explanation: "A polynomial is an expression with terms that are numbers, variables, or products of numbers and variables with whole number exponents. Terms are separated by + or -. Examples: 3x² + 2x - 5, 4x³ - x + 7.",
-                                example: "3x² + 2x - 5 is a polynomial. 3x⁻² + 2x is NOT (negative exponent). √x + 2 is NOT (fractional exponent)"
-                            },
-                            {
-                                heading: "Degree of a Polynomial",
-                                explanation: "The degree is the highest exponent of the variable. It tells you the polynomial's 'order'. Constant has degree 0, linear has degree 1, quadratic has degree 2, cubic has degree 3, etc.",
-                                example: "3x² + 2x - 5 has degree 2 (quadratic). 4x³ - x has degree 3 (cubic)"
-                            },
-                            {
-                                heading: "Adding and Subtracting Polynomials",
-                                explanation: "Combine like terms (same variable and exponent). Add or subtract coefficients, keep the variable part the same. Line up like terms vertically or group horizontally.",
-                                example: "(3x² + 2x) + (x² - 5x) = 4x² - 3x. (2x + 3) - (x - 1) = 2x + 3 - x + 1 = x + 4"
-                            },
-                            {
-                                heading: "Multiplying Polynomials",
-                                explanation: "Use the distributive property. Multiply each term in first polynomial by each term in second. Then combine like terms. FOIL method works for binomials: First, Outer, Inner, Last.",
-                                example: "(x + 2)(x + 3) = x² + 3x + 2x + 6 = x² + 5x + 6"
-                            },
-                            {
-                                heading: "Factoring Polynomials",
-                                explanation: "Factoring reverses multiplication - write as product of simpler polynomials. Common methods: GCF (greatest common factor), grouping, difference of squares, trinomial factoring.",
-                                example: "x² + 5x + 6 factors as (x + 2)(x + 3). x² - 9 factors as (x - 3)(x + 3) - difference of squares"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Add: (3x² + 2x - 1) + (x² - 3x + 4)",
-                                solution: "4x² - x + 3 (combine like terms)"
-                            },
-                            {
-                                problem: "Multiply: (x + 3)(x - 2)",
-                                solution: "x² + x - 6 (FOIL: x² - 2x + 3x - 6 = x² + x - 6)"
-                            },
-                            {
-                                problem: "Factor: x² - 16",
-                                solution: "(x - 4)(x + 4) (difference of squares)"
-                            }
-                        ],
-                        summary: "Polynomials have terms with whole number exponents. Degree is highest exponent. Add/subtract by combining like terms. Multiply using distributive property. Factor to reverse multiplication. Polynomials are fundamental to algebra!"
-                    },
-                    "Exponential Functions": {
-                        title: "Exponential Functions",
-                        introduction: "Exponential functions grow or decay rapidly! They model population growth, radioactive decay, compound interest, and many natural phenomena. Understanding exponentials helps you understand how things change over time.",
-                        concepts: [
-                            {
-                                heading: "What is an Exponential Function?",
-                                explanation: "An exponential function has the form f(x) = a·bˣ, where a is the initial value, b is the base (growth/decay factor), and x is the exponent. The variable is in the exponent, not the base!",
-                                example: "f(x) = 2·3ˣ is exponential. f(x) = x² is NOT exponential (variable in base, not exponent)"
-                            },
-                            {
-                                heading: "Exponential Growth",
-                                explanation: "When b > 1, the function grows exponentially. Each step multiplies by the base. Growth gets faster and faster. Examples: population growth, compound interest, bacteria reproduction.",
-                                example: "f(x) = 2ˣ: f(0)=1, f(1)=2, f(2)=4, f(3)=8. Doubles each time!"
-                            },
-                            {
-                                heading: "Exponential Decay",
-                                explanation: "When 0 < b < 1, the function decays exponentially. Each step multiplies by a fraction. Decay gets slower and slower. Examples: radioactive decay, depreciation, cooling.",
-                                example: "f(x) = (1/2)ˣ: f(0)=1, f(1)=0.5, f(2)=0.25, f(3)=0.125. Halves each time!"
-                            },
-                            {
-                                heading: "Graphing Exponential Functions",
-                                explanation: "Exponential graphs are curves, not lines. Growth curves go up (increasing). Decay curves go down (decreasing). They have a horizontal asymptote (usually y = 0). The y-intercept is at (0, a).",
-                                example: "f(x) = 2ˣ passes through (0,1), (1,2), (2,4). f(x) = (1/2)ˣ passes through (0,1), (1,0.5), (2,0.25)"
-                            },
-                            {
-                                heading: "Exponential vs Linear",
-                                explanation: "Linear functions add the same amount each step (constant rate). Exponential functions multiply by the same factor each step (constant ratio). Linear: y = mx + b. Exponential: y = a·bˣ.",
-                                example: "Linear: 2, 4, 6, 8 (add 2). Exponential: 2, 4, 8, 16 (multiply by 2)"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Is f(x) = 3·2ˣ exponential growth or decay?",
-                                solution: "Growth (base 2 > 1, so it grows)"
-                            },
-                            {
-                                problem: "What is the y-intercept of f(x) = 5·3ˣ?",
-                                solution: "(0, 5) (when x=0, f(0)=5·3⁰=5·1=5)"
-                            },
-                            {
-                                problem: "If a population doubles every year, what is the growth factor?",
-                                solution: "2 (doubling means multiplying by 2 each time)"
-                            }
-                        ],
-                        summary: "Exponential functions: f(x) = a·bˣ. b > 1 means growth, 0 < b < 1 means decay. Graphs are curves with horizontal asymptotes. Exponential growth/decay models many real-world phenomena like population, interest, and decay!"
-                    },
-                    "Radical Expressions": {
-                        title: "Radical Expressions",
-                        introduction: "Radical expressions involve roots, like square roots and cube roots! They're the opposite of exponents. Understanding radicals helps you work with roots, simplify expressions, and solve equations.",
-                        concepts: [
-                            {
-                                heading: "What is a Radical?",
-                                explanation: "A radical is a root symbol (√). √x means the square root of x. ∛x means cube root. The index (small number) tells which root. No index means square root (index 2).",
-                                example: "√9 = 3 (3² = 9). ∛8 = 2 (2³ = 8). √25 = 5 (5² = 25)"
-                            },
-                            {
-                                heading: "Simplifying Radicals",
-                                explanation: "Simplify by factoring out perfect squares (or cubes, etc.). √(ab) = √a × √b. Find the largest perfect square factor, take its root, leave the rest under the radical.",
-                                example: "√12 = √(4×3) = √4 × √3 = 2√3. √50 = √(25×2) = 5√2"
-                            },
-                            {
-                                heading: "Adding and Subtracting Radicals",
-                                explanation: "Only like radicals can be combined (same index and radicand). Add/subtract coefficients, keep the radical part. Think of it like combining like terms.",
-                                example: "3√2 + 5√2 = 8√2. 2√3 + 4√5 cannot be combined (different radicands)"
-                            },
-                            {
-                                heading: "Multiplying Radicals",
-                                explanation: "Multiply coefficients and radicands separately. √a × √b = √(ab). Simplify the result if possible.",
-                                example: "2√3 × 4√5 = 8√15. √6 × √6 = √36 = 6"
-                            },
-                            {
-                                heading: "Rationalizing Denominators",
-                                explanation: "Rationalize means remove radicals from denominators. Multiply numerator and denominator by the radical needed to make the denominator a perfect square.",
-                                example: "1/√2 = (1×√2)/(√2×√2) = √2/2. 3/√5 = (3√5)/(√5×√5) = 3√5/5"
-                            }
-                        ],
-                        practiceProblems: [
-                            {
-                                problem: "Simplify: √18",
-                                solution: "3√2 (√18 = √(9×2) = 3√2)"
-                            },
-                            {
-                                problem: "Add: 2√5 + 3√5",
-                                solution: "5√5 (combine like radicals)"
-                            },
-                            {
-                                problem: "Rationalize: 1/√3",
-                                solution: "√3/3 (multiply by √3/√3)"
-                            }
-                        ],
-                        summary: "Radicals are roots (√ = square root). Simplify by factoring out perfect squares. Only like radicals can be added. Multiply radicals: √a × √b = √(ab). Rationalize denominators to remove radicals. Radicals are essential for advanced algebra!"
                     }
                 }
             }
@@ -1349,30 +720,17 @@
                 // Default content if specific content not found
                 const defaultContent = {
                     title: lessonTitle,
-                    introduction: `Welcome to ${lessonTitle}! This lesson will help you understand key concepts and build your skills. Take your time to read through the material carefully and practice the exercises.`,
-                    concepts: [
-                        {
-                            heading: "Introduction to " + lessonTitle,
-                            explanation: "This lesson covers the fundamental concepts of " + lessonTitle + ". Understanding these concepts is essential for building a strong foundation in this subject area.",
-                            example: "Work through the examples provided to see how these concepts apply in practice."
-                        },
-                        {
-                            heading: "Key Principles",
-                            explanation: "Master the core principles that govern " + lessonTitle + ". These principles will help you solve problems and understand more advanced topics.",
-                            example: "Practice applying these principles to different scenarios to reinforce your understanding."
-                        }
+                    notes: [
+                        `Welcome to ${lessonTitle}!`,
+                        "This lesson will help you understand key concepts.",
+                        "Take your time to read through the notes carefully.",
+                        "Practice the examples to reinforce your learning.",
+                        "Complete this lesson to unlock practice quizzes!"
                     ],
-                    practiceProblems: [
-                        {
-                            problem: "Apply the concepts you've learned to solve a practice problem related to " + lessonTitle + ".",
-                            solution: "Work through the problem step by step, applying the key concepts and principles you've learned in this lesson."
-                        },
-                        {
-                            problem: "Think about how " + lessonTitle + " relates to real-world situations.",
-                            solution: "Consider practical applications and examples from everyday life that demonstrate these concepts."
-                        }
-                    ],
-                    summary: "In this lesson, you've explored the fundamentals of " + lessonTitle + ". Continue practicing these concepts and complete this lesson to unlock practice quizzes and advance to the next level!"
+                    examples: [
+                        "Example 1: Practice problem",
+                        "Example 2: Another practice problem"
+                    ]
                 };
                 displayLessonContent(defaultContent, isAlreadyCompleted);
             } else {
@@ -1567,7 +925,7 @@
                         <h3 class="text-xl font-bold flex-1">${lesson.title}</h3>
                         ${isCompleted ? '<span class="text-2xl ml-2 flex-shrink-0">✅</span>' : ''}
                     </div>
-                    <p class="text-sm text-[#F5F7FA]/70 mb-2">Difficulty: <span class="font-bold" style="color: ${lesson.difficulty === 'Easy' ? '#4FC3F7' : lesson.difficulty === 'Medium' ? '#FF6EC7' : '#FFFFFF'}">${lesson.difficulty}</span></p>
+                    <p class="text-sm text-[#F5F7FA]/70 mb-2">Difficulty: <span class="font-bold" style="color: ${lesson.difficulty === 'Easy' ? '#4FC3F7' : lesson.difficulty === 'Medium' ? '#FF6EC7' : '#482880'}">${lesson.difficulty}</span></p>
                     <p class="text-xs text-[#F5F7FA]/50 mb-4">Grade ${grade} Level</p>
                     <div class="mt-auto flex gap-2">
                         <button class="btn-primary flex-1 complete-lesson-btn" 
@@ -1624,9 +982,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             if (isLoggedIn()) {
-                // Set current subject
-                currentSubject = 'math';
-                
                 // Set up grade selector
                 const gradeSelector = document.getElementById('gradeSelector');
                 if (gradeSelector) {

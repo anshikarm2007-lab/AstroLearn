@@ -15,7 +15,7 @@
     <nav class="navbar">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <img src="sticker.webp" alt="AstroLearn Logo" class="h-8 w-8 object-contain">
+                <span class="text-3xl animate-pulse">⭐</span>
                 <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
                     AstroLearn
                 </a>
@@ -51,9 +51,9 @@
             </h1>
             <p class="text-xl text-[#F5F7FA]/80">Journey through literature and comprehension</p>
             <div class="mt-4 inline-flex items-center gap-3 glass-card px-4 py-2">
-                <p class="text-sm text-[#F5F7FA]">
-                    <span class="font-bold text-white text-base">Grade Level:</span> 
-                    <select id="gradeSelector" class="bg-[#0B0F2F]/95 border border-[#482880]/30 text-[#F5F7FA] font-bold cursor-pointer focus:outline-none focus:border-[#482880] rounded px-2 py-1 ml-2">
+                <p class="text-sm text-[#F5F7FA]/70">
+                    <span class="font-semibold text-[#482880]">Grade Level:</span> 
+                    <select id="gradeSelector" class="bg-transparent border-none text-[#F5F7FA] font-bold cursor-pointer focus:outline-none ml-2">
                         <option value="6">6th</option>
                         <option value="7">7th</option>
                         <option value="8">8th</option>
@@ -137,7 +137,7 @@
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p class="text-sm text-[#F5F7FA]/70 flex items-center gap-1">Powered by AstroLearn <img src="sticker.webp" alt="AstroLearn Logo" class="h-4 w-4 object-contain inline"></p>
+                    <p class="text-sm text-[#F5F7FA]/70">Powered by AstroLearn ⭐</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="about.html" class="footer-link">About</a>
@@ -378,30 +378,17 @@
             if (!content) {
                 const defaultContent = {
                     title: lessonTitle,
-                    introduction: `Welcome to ${lessonTitle}! This reading lesson will help you develop your comprehension skills and understand key literary concepts. Take your time to read through the material carefully and practice the exercises.`,
-                    concepts: [
-                        {
-                            heading: "Introduction to " + lessonTitle,
-                            explanation: "This lesson covers the fundamental concepts of " + lessonTitle + ". Understanding these concepts is essential for building strong reading comprehension and analytical skills.",
-                            example: "Work through the examples provided to see how these concepts apply when reading and analyzing texts."
-                        },
-                        {
-                            heading: "Reading Strategies",
-                            explanation: "Master the core reading strategies that help you understand " + lessonTitle + ". These strategies will help you comprehend texts more effectively and analyze literary elements.",
-                            example: "Practice applying these strategies to different texts to reinforce your understanding."
-                        }
+                    notes: [
+                        `Welcome to ${lessonTitle}!`,
+                        "This lesson will help you understand key concepts.",
+                        "Take your time to read through the notes carefully.",
+                        "Practice the examples to reinforce your learning.",
+                        "Complete this lesson to unlock practice quizzes!"
                     ],
-                    practiceProblems: [
-                        {
-                            problem: "Apply the reading concepts you've learned to analyze a text related to " + lessonTitle + ".",
-                            solution: "Work through the analysis step by step, applying the key reading strategies and concepts you've learned in this lesson."
-                        },
-                        {
-                            problem: "Think about how " + lessonTitle + " relates to understanding and interpreting literature.",
-                            solution: "Consider how these concepts help you better understand author's purpose, themes, and literary techniques in various texts."
-                        }
-                    ],
-                    summary: "In this lesson, you've explored the fundamentals of " + lessonTitle + ". Continue practicing these reading concepts and complete this lesson to unlock practice quizzes and advance to the next level!"
+                    examples: [
+                        "Example 1: Practice problem",
+                        "Example 2: Another practice problem"
+                    ]
                 };
                 displayLessonContent(defaultContent, isAlreadyCompleted);
             } else {
@@ -584,7 +571,7 @@
                         <h3 class="text-xl font-bold flex-1">${lesson.title}</h3>
                         ${isCompleted ? '<span class="text-2xl ml-2 flex-shrink-0">✅</span>' : ''}
                     </div>
-                    <p class="text-sm text-[#F5F7FA]/70 mb-2">Difficulty: <span class="font-bold" style="color: ${lesson.difficulty === 'Easy' ? '#4FC3F7' : lesson.difficulty === 'Medium' ? '#FF6EC7' : '#FFFFFF'}">${lesson.difficulty}</span></p>
+                    <p class="text-sm text-[#F5F7FA]/70 mb-2">Difficulty: <span class="font-bold" style="color: ${lesson.difficulty === 'Easy' ? '#4FC3F7' : lesson.difficulty === 'Medium' ? '#FF6EC7' : '#482880'}">${lesson.difficulty}</span></p>
                     <p class="text-xs text-[#F5F7FA]/50 mb-4">Grade ${grade} Level</p>
                     <div class="mt-auto flex gap-2">
                         <button class="btn-primary flex-1 complete-lesson-btn" 
@@ -647,9 +634,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             if (isLoggedIn()) {
-                // Set current subject
-                currentSubject = 'reading';
-                
                 // Set up grade selector
                 const gradeSelector = document.getElementById('gradeSelector');
                 if (gradeSelector) {
