@@ -15,7 +15,7 @@
     <nav class="navbar">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <span class="text-3xl animate-pulse">⭐</span>
+                <img src="sticker.webp" alt="AstroLearn Logo" class="h-8 w-8 object-contain">
                 <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-[#4FC3F7] to-[#FF6EC7] bg-clip-text text-transparent">
                     AstroLearn
                 </a>
@@ -51,9 +51,9 @@
             </h1>
             <p class="text-xl text-[#F5F7FA]/80">Connect with the world through languages</p>
             <div class="mt-4 inline-flex items-center gap-3 glass-card px-4 py-2">
-                <p class="text-sm text-[#F5F7FA]/70">
-                    <span class="font-semibold text-[#4FC3F7]">Grade Level:</span> 
-                    <select id="gradeSelector" class="bg-transparent border-none text-[#F5F7FA] font-bold cursor-pointer focus:outline-none ml-2">
+                <p class="text-sm text-[#F5F7FA]">
+                    <span class="font-bold text-white text-base">Grade Level:</span> 
+                    <select id="gradeSelector" class="bg-[#0B0F2F]/95 border border-[#4FC3F7]/30 text-[#F5F7FA] font-bold cursor-pointer focus:outline-none focus:border-[#4FC3F7] rounded px-2 py-1 ml-2">
                         <option value="6">6th</option>
                         <option value="7">7th</option>
                         <option value="8">8th</option>
@@ -106,8 +106,23 @@
             </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch" id="lessonsGrid">
                 <!-- Lessons will be populated by JS -->
+            </div>
         </div>
-    </div>
+
+        <!-- Lesson Modal -->
+        <div id="lessonModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div class="fixed inset-0 bg-black/70 backdrop-blur-sm" onclick="closeLessonModal()"></div>
+            <div class="relative glass-card p-6 md:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto z-10">
+                <button onclick="closeLessonModal()" class="absolute top-4 right-4 text-2xl text-[#F5F7FA]/70 hover:text-[#F5F7FA]">✕</button>
+                <div id="lessonContent">
+                    <!-- Lesson content will be populated by JS -->
+                </div>
+                <div class="mt-6 flex gap-4 justify-end">
+                    <button onclick="closeLessonModal()" class="btn-secondary">Close</button>
+                    <button onclick="completeCurrentLesson()" class="btn-primary" id="completeLessonBtn">Mark as Complete</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Back to Dashboard -->
         <div class="text-center mb-8">
@@ -122,7 +137,7 @@
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p class="text-sm text-[#F5F7FA]/70">Powered by AstroLearn ⭐</p>
+                    <p class="text-sm text-[#F5F7FA]/70 flex items-center gap-1">Powered by AstroLearn <img src="sticker.webp" alt="AstroLearn Logo" class="h-4 w-4 object-contain inline"></p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="about.html" class="footer-link">About</a>
@@ -239,6 +254,846 @@
         let currentSubject = null;
 
         const lessonContentByGrade = {
+            6: {
+                language: {
+                    "Basic Greetings": {
+                        title: "Basic Greetings",
+                        introduction: "Welcome to language learning! Greetings are the foundation of communication in any language. Learning how to greet people properly shows respect and helps you make connections. Let's start with the basics!",
+                        concepts: [
+                            {
+                                heading: "Why Greetings Matter",
+                                explanation: "Greetings are the first words you exchange with someone. They set the tone for your conversation and show respect. In different cultures, greetings can be formal or informal, and it's important to know when to use each type. A good greeting can make someone feel welcome and valued.",
+                                example: "Saying 'Hello' with a smile makes people feel more comfortable talking to you, whether you're meeting someone new or seeing a friend."
+                            },
+                            {
+                                heading: "Common Greetings in English",
+                                explanation: "In English, we have many ways to greet people: 'Hello' (formal and informal), 'Hi' (informal, friendly), 'Hey' (very informal, with friends), 'Good morning' (before noon), 'Good afternoon' (noon to evening), 'Good evening' (evening), 'How are you?' (asking about someone's well-being). Choose the right greeting based on the situation and who you're talking to.",
+                                example: "Use 'Hello' or 'Good morning' with teachers and adults. Use 'Hi' or 'Hey' with friends your age."
+                            },
+                            {
+                                heading: "Responding to Greetings",
+                                explanation: "When someone greets you, respond appropriately. If they say 'Hello' or 'Hi,' you can respond the same way. If they ask 'How are you?,' common responses include: 'I'm fine, thank you' (polite), 'I'm good' (casual), 'Great!' (enthusiastic), 'Not bad' (okay). You can also ask them back: 'How are you?' or 'And you?'",
+                                example: "Person A: 'Hi, how are you?' Person B: 'I'm good, thanks! How are you?' Person A: 'Great, thanks!'"
+                            },
+                            {
+                                heading: "Saying Goodbye",
+                                explanation: "Just like greetings, there are many ways to say goodbye: 'Goodbye' (formal), 'Bye' (informal), 'See you later' (informal, you'll see them again), 'See you soon' (informal, soon), 'Have a good day' (polite, wishing them well), 'Take care' (friendly, caring). Choose based on the situation and your relationship with the person.",
+                                example: "With friends: 'Bye! See you later!' With teachers: 'Goodbye, have a good day!'"
+                            },
+                            {
+                                heading: "Body Language and Greetings",
+                                explanation: "Body language is part of greetings too! A smile, eye contact, and a friendly tone make your greeting warm and welcoming. In some cultures, people shake hands, hug, or bow. In casual settings, a wave or nod works. Match your body language to the situation and culture.",
+                                example: "When greeting a friend, you might smile and wave. When greeting a teacher, you might make eye contact and say 'Good morning' clearly."
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "What greeting would you use when meeting your friend at 3 PM?",
+                                solution: "You could use 'Hi' or 'Hey' (informal, friendly) since it's a friend. You could also say 'Good afternoon' if you want to be more formal, but 'Hi' is most common with friends."
+                            },
+                            {
+                                problem: "How would you respond if your teacher asks 'How are you?'",
+                                solution: "A polite response would be 'I'm fine, thank you. How are you?' or 'I'm doing well, thank you.' This shows respect and politeness."
+                            },
+                            {
+                                problem: "What's the difference between 'Hello' and 'Hey'?",
+                                solution: "'Hello' is more formal and can be used in any situation. 'Hey' is very informal and should only be used with friends or people you know well. 'Hello' is safer to use when you're not sure."
+                            }
+                        ],
+                        summary: "Greetings are essential for communication. Learn common greetings (Hello, Hi, Good morning) and when to use them. Practice responding to greetings politely. Know different ways to say goodbye (Goodbye, Bye, See you later). Remember that body language (smile, eye contact) is part of greetings too. Practice makes perfect - use greetings every day!"
+                    },
+                    "Numbers and Colors": {
+                        title: "Numbers and Colors",
+                        introduction: "Numbers and colors are everywhere! They help us describe the world around us, count objects, and express ourselves. Learning numbers and colors in a new language is fun and practical. Let's explore them together!",
+                        concepts: [
+                            {
+                                heading: "Numbers 1-20",
+                                explanation: "Learning to count is fundamental. Start with numbers 1-20: 1 (one), 2 (two), 3 (three), 4 (four), 5 (five), 6 (six), 7 (seven), 8 (eight), 9 (nine), 10 (ten), 11 (eleven), 12 (twelve), 13 (thirteen), 14 (fourteen), 15 (fifteen), 16 (sixteen), 17 (seventeen), 18 (eighteen), 19 (nineteen), 20 (twenty). Practice counting objects around you to remember them better!",
+                                example: "Count your fingers: one, two, three, four, five on one hand, and six, seven, eight, nine, ten on both hands!"
+                            },
+                            {
+                                heading: "Basic Colors",
+                                explanation: "Colors help us describe everything! Primary colors: Red (like an apple), Blue (like the sky), Yellow (like the sun). Other common colors: Green (like grass), Orange (like an orange fruit), Purple (like grapes), Pink (like a rose), Brown (like tree bark), Black (like night), White (like snow), Gray/Grey (like clouds). Colors make our descriptions more interesting!",
+                                example: "Instead of saying 'I have a car,' you can say 'I have a red car' to be more specific and descriptive."
+                            },
+                            {
+                                heading: "Using Numbers in Sentences",
+                                explanation: "Numbers can tell us quantity (how many), order (first, second, third), age, time, and more. Examples: 'I have three books' (quantity), 'This is my first day' (order), 'I am twelve years old' (age), 'It's 3 o'clock' (time). Numbers make our communication precise and clear.",
+                                example: "'There are five students in the group' tells us exactly how many students there are."
+                            },
+                            {
+                                heading: "Describing with Colors",
+                                explanation: "Colors are adjectives - they describe nouns. You can say 'a red apple,' 'the blue sky,' 'my green backpack.' Colors help us identify and distinguish things. You can also combine colors: 'light blue,' 'dark green,' 'bright yellow.' Using colors makes your descriptions vivid and clear!",
+                                example: "'The red car is fast' is more descriptive than just 'The car is fast.'"
+                            },
+                            {
+                                heading: "Color and Number Combinations",
+                                explanation: "You can use numbers and colors together to describe things precisely. Examples: 'three red apples,' 'two blue books,' 'five green pencils.' This helps you be specific and clear when talking about objects, people, or places.",
+                                example: "'I need two blue pens and three red pencils' is very clear and specific about what you need."
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "How would you describe having five red apples?",
+                                solution: "You would say 'I have five red apples' - using both the number (five) and the color (red) to describe the apples clearly."
+                            },
+                            {
+                                problem: "What's the difference between 'three books' and 'three blue books'?",
+                                solution: "'Three books' tells you the quantity (three). 'Three blue books' tells you both the quantity (three) and the color (blue), making it more specific."
+                            },
+                            {
+                                problem: "Count from 1 to 10 and name a color for each number (e.g., 'one red').",
+                                solution: "One red, two blue, three yellow, four green, five orange, six purple, seven pink, eight brown, nine black, ten white. (You can use any colors you like!)"
+                            }
+                        ],
+                        summary: "Numbers (1-20) help us count and be precise. Colors (red, blue, yellow, green, etc.) help us describe the world. Use numbers to tell quantity, order, age, and time. Use colors as adjectives to describe nouns. Combine numbers and colors for clear descriptions (e.g., 'three red apples'). Practice counting and naming colors every day!"
+                    },
+                    "Family and Friends": {
+                        title: "Family and Friends",
+                        introduction: "Family and friends are the most important people in our lives! Learning to talk about them helps us share our stories and connect with others. Let's learn vocabulary and phrases to describe the people we care about.",
+                        concepts: [
+                            {
+                                heading: "Family Members",
+                                explanation: "Family vocabulary helps you talk about your relatives. Immediate family: Mother/Mom (your female parent), Father/Dad (your male parent), Sister (female sibling), Brother (male sibling), Son (male child), Daughter (female child). Extended family: Grandmother/Grandma (mother's or father's mother), Grandfather/Grandpa (mother's or father's father), Aunt (parent's sister), Uncle (parent's brother), Cousin (aunt's or uncle's child).",
+                                example: "'My mother's name is Sarah, and my father's name is John. I have one sister and two brothers.'"
+                            },
+                            {
+                                heading: "Describing Family",
+                                explanation: "You can describe family members using adjectives. Examples: 'My mom is kind' (describing personality), 'My dad is tall' (describing appearance), 'My sister is funny' (describing personality), 'My brother is smart' (describing intelligence). You can also say how old they are: 'My sister is 10 years old.'",
+                                example: "'I have a kind mother, a tall father, and a funny sister. My brother is 12 years old.'"
+                            },
+                            {
+                                heading: "Friends Vocabulary",
+                                explanation: "Friends are people you choose to spend time with. Key words: Friend (someone you like and spend time with), Best friend (your closest friend), Classmate (someone in your class), Neighbor (someone who lives near you). You can describe friends too: 'My friend is nice,' 'My best friend is funny and smart.'",
+                                example: "'Maria is my best friend. She is kind and funny. We like to play together.'"
+                            },
+                            {
+                                heading: "Talking About Relationships",
+                                explanation: "You can describe your relationships with family and friends. Examples: 'I love my family' (strong feeling), 'I like my friends' (positive feeling), 'I get along with my sister' (we have a good relationship), 'My friend and I play together' (we do activities together). These phrases help you express how you feel about people.",
+                                example: "'I love my family. My mom is my best friend, and I get along well with my brother.'"
+                            },
+                            {
+                                heading: "Possessive Words",
+                                explanation: "Possessive words show ownership or relationship. Use 'my' (belongs to me), 'your' (belongs to you), 'his' (belongs to him), 'her' (belongs to her), 'our' (belongs to us), 'their' (belongs to them). Examples: 'my mother,' 'your friend,' 'his sister,' 'her brother.' These words help you talk about relationships clearly.",
+                                example: "'This is my friend. Her name is Emma. Her brother is in my class.'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "How would you introduce your family?",
+                                solution: "You could say: 'This is my family. My mother's name is [name], and my father's name is [name]. I have [number] sister(s) and [number] brother(s).' You can add descriptions like 'My mom is kind' or 'My dad is funny.'"
+                            },
+                            {
+                                problem: "What's the difference between 'friend' and 'best friend'?",
+                                solution: "A 'friend' is someone you like and spend time with. A 'best friend' is your closest, most special friend - the person you're closest to and trust the most."
+                            },
+                            {
+                                problem: "How would you describe your best friend?",
+                                solution: "You could say: 'My best friend's name is [name]. He/She is [adjective like kind, funny, smart]. We like to [activity like play, read, draw] together.'"
+                            }
+                        ],
+                        summary: "Learn family vocabulary (mother, father, sister, brother, grandmother, etc.). Describe family members with adjectives (kind, tall, funny). Use friend vocabulary (friend, best friend, classmate). Talk about relationships ('I love my family,' 'I get along with my sister'). Use possessive words (my, your, his, her) to show relationships. Practice talking about the people you care about!"
+                    },
+                    "Daily Activities": {
+                        title: "Daily Activities",
+                        introduction: "Every day, we do many activities - from waking up to going to bed! Learning to talk about daily activities helps you describe your routine and understand others. Let's explore common daily activities and how to talk about them.",
+                        concepts: [
+                            {
+                                heading: "Morning Activities",
+                                explanation: "Morning routines start your day. Common activities: Wake up (stop sleeping), Get up (leave bed), Brush teeth (clean teeth), Wash face (clean face), Get dressed (put on clothes), Eat breakfast (morning meal), Go to school (attend school). These activities happen in the morning to prepare for the day.",
+                                example: "'I wake up at 7 AM, brush my teeth, eat breakfast, and then go to school.'"
+                            },
+                            {
+                                heading: "School Activities",
+                                explanation: "At school, you do many things: Study (learn), Read (look at words in books), Write (put words on paper), Listen (pay attention to sounds), Speak/Talk (use your voice), Do homework (complete schoolwork), Play (have fun), Eat lunch (midday meal). School is where you learn and spend time with friends!",
+                                example: "'At school, I study math, read books, write stories, and play with my friends during recess.'"
+                            },
+                            {
+                                heading: "Afternoon and Evening Activities",
+                                explanation: "After school, you might: Do homework (complete assignments), Play (have fun), Watch TV (view television), Read (look at books), Help parents (assist family), Eat dinner (evening meal), Take a shower (clean body), Go to bed (sleep). These activities fill your afternoon and evening.",
+                                example: "'After school, I do my homework, then I play outside, eat dinner with my family, and go to bed at 9 PM.'"
+                            },
+                            {
+                                heading: "Using Time Words",
+                                explanation: "Time words help you say when activities happen. Examples: In the morning (early part of day), In the afternoon (middle part of day), In the evening (late part of day), At night (dark time), Before (earlier than), After (later than), Then (next), Now (at this moment). These words organize your daily routine.",
+                                example: "'In the morning, I wake up and eat breakfast. Then I go to school. After school, I do homework. At night, I go to bed.'"
+                            },
+                            {
+                                heading: "Frequency Words",
+                                explanation: "Frequency words tell how often you do activities. Examples: Always (every time, 100%), Usually (most of the time), Often (many times), Sometimes (not always, not never), Never (not ever, 0%), Every day (each day), Once a week (one time per week). These words help you describe your habits.",
+                                example: "'I always brush my teeth in the morning. I usually do homework after school. I sometimes watch TV. I never go to bed late.'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "Describe your morning routine using time words.",
+                                solution: "Example: 'In the morning, I wake up at 7 AM. Then I brush my teeth and wash my face. After that, I get dressed and eat breakfast. Then I go to school.' (Your routine may be different!)"
+                            },
+                            {
+                                problem: "What's the difference between 'always' and 'sometimes'?",
+                                solution: "'Always' means you do something every time (100% of the time). 'Sometimes' means you do it some of the time, but not always and not never - it's in between."
+                            },
+                            {
+                                problem: "How would you describe what you do after school?",
+                                solution: "Example: 'After school, I usually do my homework. Then I sometimes play outside or read a book. I always eat dinner with my family. In the evening, I take a shower and go to bed.'"
+                            }
+                        ],
+                        summary: "Learn morning activities (wake up, brush teeth, eat breakfast, go to school). Know school activities (study, read, write, play). Understand afternoon/evening activities (do homework, eat dinner, go to bed). Use time words (in the morning, after, then) to organize your routine. Use frequency words (always, usually, sometimes, never) to describe habits. Practice describing your daily routine!"
+                    },
+                    "Food and Drinks": {
+                        title: "Food and Drinks",
+                        introduction: "Food and drinks are essential parts of our lives! We need them to stay healthy and energized. Learning food vocabulary helps you talk about what you like, order at restaurants, and describe meals. Let's explore food and drinks together!",
+                        concepts: [
+                            {
+                                heading: "Common Foods",
+                                explanation: "Food vocabulary helps you talk about what you eat. Fruits: Apple, Banana, Orange, Grapes, Strawberry. Vegetables: Carrot, Broccoli, Tomato, Lettuce, Potato. Proteins: Chicken, Fish, Egg, Meat. Grains: Bread, Rice, Pasta. Dairy: Milk, Cheese, Yogurt. Learning these words helps you describe meals and preferences.",
+                                example: "'For lunch, I eat chicken, rice, and broccoli. I like apples and bananas for snacks.'"
+                            },
+                            {
+                                heading: "Common Drinks",
+                                explanation: "Drinks keep us hydrated and can be part of meals. Common drinks: Water (essential for health), Milk (dairy drink), Juice (fruit drink like orange juice, apple juice), Soda (carbonated drink), Tea (hot or cold beverage), Coffee (hot beverage, usually for adults). Water is the healthiest choice!",
+                                example: "'I drink water with every meal. In the morning, I drink milk. Sometimes I have orange juice.'"
+                            },
+                            {
+                                heading: "Meal Times",
+                                explanation: "We eat at different times of day. Breakfast (morning meal - first meal of the day), Lunch (midday meal - around noon), Dinner (evening meal - largest meal), Snack (small food between meals). Each meal has typical foods. Breakfast might include eggs and toast. Lunch might be a sandwich. Dinner might be a full meal with protein, vegetables, and grains.",
+                                example: "'For breakfast, I eat eggs and toast. For lunch, I have a sandwich and fruit. For dinner, I eat chicken, rice, and vegetables.'"
+                            },
+                            {
+                                heading: "Expressing Likes and Dislikes",
+                                explanation: "You can express what you like or don't like about food. Like: 'I like pizza' (you enjoy it), 'I love ice cream' (you really enjoy it), 'My favorite food is pasta' (you like it most). Dislike: 'I don't like broccoli' (you don't enjoy it), 'I hate spinach' (you really don't like it). Be polite when expressing dislikes!",
+                                example: "'I like pizza and pasta. My favorite food is ice cream. I don't like broccoli, but I eat it because it's healthy.'"
+                            },
+                            {
+                                heading: "Healthy Eating",
+                                explanation: "Healthy eating means choosing nutritious foods. Fruits and vegetables are important (they have vitamins). Protein (chicken, fish, eggs) helps your body grow. Whole grains (brown rice, whole wheat bread) give you energy. Drink plenty of water. Limit sugary drinks and snacks. A balanced diet includes different food groups!",
+                                example: "'A healthy meal includes protein (like chicken), vegetables (like broccoli), and grains (like rice). I drink water instead of soda.'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "How would you describe your favorite meal?",
+                                solution: "Example: 'My favorite meal is dinner. I like to eat chicken, rice, and broccoli. I drink water with my meal. For dessert, I love ice cream!'"
+                            },
+                            {
+                                problem: "What's the difference between 'like' and 'love' when talking about food?",
+                                solution: "'Like' means you enjoy the food. 'Love' means you really, really enjoy it - it's stronger than 'like.' For example, 'I like pizza, but I love ice cream' means you enjoy pizza, but ice cream is even better!"
+                            },
+                            {
+                                problem: "Describe a healthy breakfast using food vocabulary.",
+                                solution: "Example: 'A healthy breakfast includes eggs (protein), whole wheat toast (grains), and fruit like an apple or banana. I drink milk or water with breakfast.'"
+                            }
+                        ],
+                        summary: "Learn food vocabulary (fruits, vegetables, proteins, grains, dairy). Know common drinks (water, milk, juice, soda). Understand meal times (breakfast, lunch, dinner, snack). Express likes ('I like pizza') and dislikes ('I don't like broccoli') politely. Remember healthy eating - include fruits, vegetables, protein, and grains. Drink plenty of water. Practice talking about food and drinks!"
+                    },
+                    "Simple Conversations": {
+                        title: "Simple Conversations",
+                        introduction: "Conversations are how we connect with others! Learning to have simple conversations helps you make friends, ask for help, and share ideas. Let's learn common conversation phrases and how to have basic dialogues.",
+                        concepts: [
+                            {
+                                heading: "Starting a Conversation",
+                                explanation: "You can start conversations in friendly ways. Greetings: 'Hello,' 'Hi,' 'Hey' (with friends). Questions: 'How are you?' (asking about well-being), 'What's up?' (casual, asking what's happening), 'How's it going?' (casual, asking how things are). Starting with a greeting and a question shows interest in the other person.",
+                                example: "'Hi! How are you?' or 'Hey! What's up?' are friendly ways to start a conversation."
+                            },
+                            {
+                                heading: "Asking Questions",
+                                explanation: "Questions help you learn and show interest. Question words: What (asking about things), Who (asking about people), Where (asking about places), When (asking about time), Why (asking about reasons), How (asking about manner). Examples: 'What's your name?' 'Where are you from?' 'How old are you?' 'What do you like?'",
+                                example: "'What's your favorite color?' 'Where do you live?' 'How are you today?'"
+                            },
+                            {
+                                heading: "Giving Answers",
+                                explanation: "When someone asks you a question, give a clear answer. Be friendly and complete. Examples: Question: 'What's your name?' Answer: 'My name is Maria.' Question: 'How are you?' Answer: 'I'm good, thanks! How are you?' Question: 'What do you like?' Answer: 'I like reading and playing soccer.'",
+                                example: "Person A: 'What's your favorite food?' Person B: 'My favorite food is pizza. What about you?'"
+                            },
+                            {
+                                heading: "Continuing Conversations",
+                                explanation: "Keep conversations going by asking follow-up questions and sharing information. After answering, you can ask: 'What about you?' 'And you?' 'How about you?' You can also add: 'That's interesting!' 'Really?' 'Cool!' 'Me too!' (if you agree). This shows you're listening and interested.",
+                                example: "Person A: 'I like soccer.' Person B: 'Me too! Do you play on a team?' Person A: 'Yes! What about you?'"
+                            },
+                            {
+                                heading: "Ending Conversations",
+                                explanation: "End conversations politely. Good ways to end: 'I have to go now' (you need to leave), 'See you later!' (you'll see them again), 'Nice talking to you!' (you enjoyed the conversation), 'Take care!' (wishing them well), 'Bye!' (casual goodbye). Always end on a friendly note!",
+                                example: "'It was nice talking to you! I have to go now. See you later!' 'Bye! Take care!'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "How would you start a conversation with a new classmate?",
+                                solution: "You could say: 'Hi! My name is [your name]. What's your name?' or 'Hello! I'm [your name]. How are you?' Start with a greeting and introduce yourself, then ask a question to continue the conversation."
+                            },
+                            {
+                                problem: "What should you do after someone answers your question?",
+                                solution: "After someone answers, you can: 1) Respond to their answer ('That's cool!' 'Interesting!'), 2) Ask a follow-up question to learn more, 3) Share your own answer ('Me too!' or 'I like that too!'), 4) Ask 'What about you?' to keep the conversation going."
+                            },
+                            {
+                                problem: "Practice a simple conversation about favorite hobbies.",
+                                solution: "Example: Person A: 'Hi! What do you like to do for fun?' Person B: 'I like reading and drawing. What about you?' Person A: 'I like playing soccer and video games. That's cool that you like drawing!' Person B: 'Thanks! Maybe we can play soccer together sometime.' Person A: 'That sounds fun! See you later!'"
+                            }
+                        ],
+                        summary: "Start conversations with greetings and questions ('Hi! How are you?'). Use question words (what, who, where, when, why, how) to ask questions. Give clear, friendly answers. Continue conversations by asking follow-up questions and sharing ('What about you?' 'Me too!'). End conversations politely ('See you later!' 'Nice talking to you!'). Practice having conversations every day - it gets easier!"
+                    }
+                }
+            },
+            7: {
+                language: {
+                    "Present Tense Verbs": {
+                        title: "Present Tense Verbs",
+                        introduction: "Verbs are action words - they tell us what someone or something does! Present tense verbs describe actions happening now or habits. Understanding present tense is essential for clear communication. Let's master present tense verbs!",
+                        concepts: [
+                            {
+                                heading: "What Are Verbs?",
+                                explanation: "Verbs are words that show action or state of being. Action verbs show what someone does: run, jump, eat, read, write, play, study, talk. State-of-being verbs show what someone is: am, is, are, was, were. Every sentence needs a verb!",
+                                example: "'I run' (action - running), 'She reads' (action - reading), 'They are happy' (state - being happy)"
+                            },
+                            {
+                                heading: "Present Tense Basics",
+                                explanation: "Present tense describes actions happening now or habits. For most verbs, add -s or -es for he/she/it (third person singular). Examples: I walk, You walk, He/She/It walks, We walk, They walk. The verb changes only for he/she/it. Regular verbs follow this pattern.",
+                                example: "'I play soccer' (I do this), 'She plays soccer' (she does this - note the 's'), 'We play soccer' (we do this)"
+                            },
+                            {
+                                heading: "Irregular Verbs",
+                                explanation: "Some verbs don't follow the regular -s pattern. Common irregular verbs: To be (I am, You are, He/She/It is, We are, They are), To have (I have, You have, He/She/It has, We have, They have), To do (I do, You do, He/She/It does, We do, They do), To go (I go, You go, He/She/It goes, We go, They go). These must be memorized!",
+                                example: "'I am a student' (not 'I is'), 'She has a book' (not 'She have'), 'He goes to school' (not 'He go')"
+                            },
+                            {
+                                heading: "Using Present Tense",
+                                explanation: "Use present tense for: Actions happening now ('I am reading'), Habits ('I read every day'), General truths ('The sun rises in the east'), Scheduled events ('School starts at 8 AM'). Present tense is the most common tense in everyday conversation!",
+                                example: "'I study English every day' (habit), 'She is writing a letter' (happening now), 'Water boils at 100°C' (general truth)"
+                            },
+                            {
+                                heading: "Negative and Questions",
+                                explanation: "For negatives, use 'do not' (don't) or 'does not' (doesn't): 'I don't like broccoli,' 'She doesn't play soccer.' For questions, use 'do' or 'does': 'Do you like pizza?' 'Does she play soccer?' The verb 'be' is different: 'I am not tired,' 'Are you happy?'",
+                                example: "'I don't eat meat' (negative), 'Do you like music?' (question), 'She doesn't watch TV' (negative), 'Does he study?' (question)"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "What's the difference between 'I play' and 'She plays'?",
+                                solution: "'I play' uses the base form of the verb. 'She plays' adds 's' because 'she' is third person singular (he/she/it). For most verbs, we add -s or -es for he/she/it in present tense."
+                            },
+                            {
+                                problem: "How do you make 'I like pizza' negative?",
+                                solution: "You would say 'I don't like pizza.' Use 'do not' (don't) + base verb for negatives with I/you/we/they. For he/she/it, use 'doesn't': 'She doesn't like pizza.'"
+                            },
+                            {
+                                problem: "How do you ask 'Does she play soccer?' and answer it?",
+                                solution: "Question: 'Does she play soccer?' Answers: 'Yes, she does' (if she plays) or 'No, she doesn't' (if she doesn't play). Use 'does' for questions with he/she/it."
+                            }
+                        ],
+                        summary: "Verbs show action or state of being. Present tense describes actions now or habits. Add -s/-es for he/she/it (I play, She plays). Learn irregular verbs (am/is/are, have/has, do/does, go/goes). Use present tense for current actions, habits, and general truths. Use 'don't/doesn't' for negatives and 'do/does' for questions. Practice using present tense verbs every day!"
+                    },
+                    "Common Phrases": {
+                        title: "Common Phrases",
+                        introduction: "Common phrases are expressions we use every day! They help us communicate naturally and politely. Learning these phrases makes your English sound more natural and helps you in everyday situations. Let's learn essential common phrases!",
+                        concepts: [
+                            {
+                                heading: "Polite Phrases",
+                                explanation: "Polite phrases show respect and good manners. Essential phrases: 'Please' (when asking for something), 'Thank you' or 'Thanks' (when someone helps you), 'You're welcome' (response to thank you), 'Excuse me' (to get attention or apologize), 'I'm sorry' (to apologize), 'Pardon me' (to ask someone to repeat or to apologize). Always use polite phrases!",
+                                example: "'Can I have a pencil, please?' 'Thank you!' 'You're welcome!' 'Excuse me, where is the bathroom?' 'I'm sorry I'm late.'"
+                            },
+                            {
+                                heading: "Asking for Help",
+                                explanation: "When you need help, use polite phrases. Examples: 'Can you help me?' (asking for assistance), 'Could you please...?' (polite request), 'I need help with...' (stating what you need), 'Would you mind...?' (very polite request), 'Can I ask you a question?' (asking permission to ask). Being polite when asking for help is important!",
+                                example: "'Could you please help me with this problem?' 'I need help with my homework.' 'Would you mind explaining this?'"
+                            },
+                            {
+                                heading: "Agreeing and Disagreeing",
+                                explanation: "You can agree or disagree politely. Agreeing: 'Yes' (simple agreement), 'I agree' (you think the same), 'That's right' (confirming), 'Exactly' (strong agreement), 'Me too' (you also do/think that). Disagreeing: 'No' (simple disagreement), 'I don't think so' (polite disagreement), 'I disagree' (you think differently), 'Actually...' (polite correction). Be respectful when disagreeing!",
+                                example: "Agreeing: 'I like pizza.' 'Me too!' Disagreeing: 'I think math is easy.' 'I don't think so. Math is hard for me.'"
+                            },
+                            {
+                                heading: "Expressing Opinions",
+                                explanation: "Share your opinions politely. Phrases: 'I think...' (your opinion), 'In my opinion...' (your view), 'I believe...' (what you believe), 'I feel that...' (your feeling), 'It seems to me...' (your observation). You can also ask for opinions: 'What do you think?' 'What's your opinion?'",
+                                example: "'I think reading is fun.' 'In my opinion, science is interesting.' 'What do you think about this book?'"
+                            },
+                            {
+                                heading: "Everyday Expressions",
+                                explanation: "Common everyday expressions make conversation natural. Examples: 'How are you?' (asking about well-being), 'What's up?' (casual greeting), 'See you later!' (goodbye), 'Have a good day!' (wishing well), 'Good luck!' (wishing success), 'Congratulations!' (celebrating success), 'Break a leg!' (good luck, especially for performances). These expressions are used frequently!",
+                                example: "'How are you?' 'I'm good, thanks! Have a good day!' 'Good luck on your test!' 'Thanks! See you later!'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "How would you politely ask a teacher for help?",
+                                solution: "You could say: 'Excuse me, could you please help me with this problem?' or 'I need help with my homework. Can you help me, please?' Always use 'please' and be respectful."
+                            },
+                            {
+                                problem: "What's the difference between 'I think' and 'I know'?",
+                                solution: "'I think' expresses an opinion or belief - you're not 100% sure. 'I know' expresses certainty - you're sure about something. Example: 'I think it might rain' (opinion) vs 'I know it's Monday' (fact)."
+                            },
+                            {
+                                problem: "How would you politely disagree with someone?",
+                                solution: "You could say: 'I don't think so' or 'I disagree' or 'Actually, I think differently.' Always be respectful. Example: 'I think math is easy.' 'I don't think so. Math is challenging for me, but I'm working on it.'"
+                            }
+                        ],
+                        summary: "Use polite phrases (Please, Thank you, You're welcome, Excuse me, I'm sorry). Ask for help politely ('Can you help me, please?'). Agree ('I agree,' 'Me too') and disagree ('I don't think so') respectfully. Express opinions ('I think...' 'In my opinion...'). Use everyday expressions naturally ('How are you?' 'See you later!'). Practice using these phrases - they make communication smoother!"
+                    },
+                    "Describing People": {
+                        title: "Describing People",
+                        introduction: "Being able to describe people helps you talk about yourself and others! You can describe appearance (how someone looks) and personality (how someone acts or feels). Let's learn vocabulary and phrases to describe people accurately and respectfully.",
+                        concepts: [
+                            {
+                                heading: "Physical Appearance - Height and Build",
+                                explanation: "Describe height and body type. Height: Tall (above average height), Short (below average height), Average height (normal height), Medium height (in between). Build: Thin (not fat), Heavy/Overweight (above normal weight), Average build (normal body type), Athletic (strong, fit), Slim (thin and healthy). Be respectful when describing people!",
+                                example: "'My friend is tall and athletic. She plays basketball.' 'My brother is average height and has an average build.'"
+                            },
+                            {
+                                heading: "Physical Appearance - Hair and Eyes",
+                                explanation: "Hair and eyes are common features to describe. Hair: Long, Short, Medium length, Straight, Curly, Wavy, Blonde, Brown, Black, Red, Gray. Eyes: Blue, Brown, Green, Hazel, Big, Small. You can combine: 'She has long brown hair and blue eyes.'",
+                                example: "'He has short black hair and brown eyes.' 'She has curly blonde hair and green eyes.'"
+                            },
+                            {
+                                heading: "Personality Traits",
+                                explanation: "Personality describes how someone acts or feels. Positive traits: Kind (caring, nice), Friendly (welcoming, sociable), Funny (makes people laugh), Smart/Intelligent (good at thinking), Helpful (willing to assist), Honest (truthful), Patient (calm, not rushed), Creative (imaginative). Negative traits (use carefully): Shy (quiet, reserved), Stubborn (won't change mind easily), Lazy (doesn't want to work).",
+                                example: "'My teacher is kind and patient. She always helps us.' 'My friend is funny and friendly. Everyone likes her.'"
+                            },
+                            {
+                                heading: "Using Adjectives",
+                                explanation: "Adjectives describe nouns (people, places, things). When describing people, put adjectives before the noun or use 'is/are' + adjective. Examples: 'a kind person,' 'She is kind,' 'friendly students,' 'They are friendly.' You can use multiple adjectives: 'a tall, athletic, friendly person' or 'She is tall, athletic, and friendly.'",
+                                example: "'My friend is tall, smart, and funny.' 'He is a kind and helpful person.'"
+                            },
+                            {
+                                heading: "Comparing People",
+                                explanation: "You can compare people using comparative forms. Add -er for short adjectives: 'taller,' 'shorter,' 'smarter,' 'funnier.' Use 'more' for long adjectives: 'more intelligent,' 'more creative,' 'more patient.' Use 'than' to compare: 'She is taller than me,' 'He is more creative than his brother.'",
+                                example: "'My sister is taller than me.' 'My friend is more outgoing than I am.' 'She is the smartest person in our class.'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "How would you describe your best friend's appearance and personality?",
+                                solution: "Example: 'My best friend has long brown hair and brown eyes. She is average height and has an athletic build. She is kind, funny, and very smart. She is also very helpful and always there for me.'"
+                            },
+                            {
+                                problem: "What's the difference between describing appearance and personality?",
+                                solution: "Appearance describes how someone looks physically (height, hair, eyes, build). Personality describes how someone acts, thinks, or feels (kind, funny, smart, shy). Both are important parts of describing a person!"
+                            },
+                            {
+                                problem: "How would you compare two people?",
+                                solution: "Example: 'My sister is taller than me, and she is more outgoing. I am shorter and more shy. But we are both kind and like to help others.' Use 'taller than,' 'more [adjective] than' to compare."
+                            }
+                        ],
+                        summary: "Describe physical appearance: height (tall, short), build (thin, athletic), hair (long, curly, brown), eyes (blue, brown). Describe personality: positive traits (kind, friendly, funny, smart), negative traits (use carefully). Use adjectives correctly ('She is kind' or 'a kind person'). Compare people using -er or 'more' ('taller than,' 'more intelligent than'). Always be respectful when describing people. Practice describing yourself and others!"
+                    },
+                    "School and Hobbies": {
+                        title: "School and Hobbies",
+                        introduction: "School and hobbies are big parts of your life! Learning to talk about school subjects, activities, and hobbies helps you share your interests and connect with others. Let's explore vocabulary for school and hobbies!",
+                        concepts: [
+                            {
+                                heading: "School Subjects",
+                                explanation: "School subjects are the different classes you take. Common subjects: Math (numbers and calculations), Science (experiments and nature), English (reading and writing), History (past events), Geography (places and maps), Art (drawing and creativity), Music (songs and instruments), Physical Education/PE (sports and exercise), Foreign Language (learning another language). You can say which subjects you like or don't like!",
+                                example: "'My favorite subjects are math and science. I also like art and music. I find history interesting.'"
+                            },
+                            {
+                                heading: "School Activities",
+                                explanation: "At school, you do many activities. Academic: Study (learn), Read (look at books), Write (put words on paper), Take tests (examinations), Do homework (assignments), Present (show to class). Social: Play (have fun), Eat lunch (midday meal), Talk with friends (conversation), Join clubs (groups). School is both learning and socializing!",
+                                example: "'At school, I study math, read books in English class, and do homework. I also play with friends during recess and eat lunch with my classmates.'"
+                            },
+                            {
+                                heading: "Hobbies and Interests",
+                                explanation: "Hobbies are activities you do for fun in your free time. Common hobbies: Reading (books, magazines), Drawing/Painting (creating art), Playing sports (soccer, basketball, etc.), Playing video games (electronic games), Listening to music (songs), Watching movies/TV (entertainment), Cooking (making food), Collecting (stamps, coins, etc.), Writing (stories, poems), Photography (taking pictures). Everyone has different hobbies!",
+                                example: "'My hobbies are reading, drawing, and playing soccer. I also like listening to music and watching movies in my free time.'"
+                            },
+                            {
+                                heading: "Expressing Likes and Dislikes",
+                                explanation: "Talk about what you like or don't like. Likes: 'I like...' (you enjoy it), 'I love...' (you really enjoy it), 'I enjoy...' (you have fun with it), 'My favorite... is...' (you like it most), 'I'm interested in...' (it catches your attention). Dislikes: 'I don't like...' (you don't enjoy it), 'I dislike...' (you don't like it), 'I'm not interested in...' (it doesn't catch your attention).",
+                                example: "'I love reading and playing soccer. My favorite hobby is drawing. I don't like watching TV, but I enjoy movies.'"
+                            },
+                            {
+                                heading: "Talking About Frequency",
+                                explanation: "Say how often you do activities. Frequency words: Always (every time), Usually (most of the time), Often (many times), Sometimes (not always, not never), Rarely (not often), Never (not ever). Time phrases: Every day (each day), Once a week (one time per week), Twice a month (two times per month), On weekends (Saturday and Sunday).",
+                                example: "'I always do my homework. I usually play soccer after school. I sometimes read before bed. I never skip breakfast.'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "How would you describe your favorite school subject and why you like it?",
+                                solution: "Example: 'My favorite subject is science because I love doing experiments and learning about how things work. I find it very interesting and fun. I usually do well in science class.'"
+                            },
+                            {
+                                problem: "How would you talk about your hobbies and how often you do them?",
+                                solution: "Example: 'My hobbies are reading and playing soccer. I read every day before bed - I love books! I play soccer twice a week with my team. I also enjoy drawing on weekends when I have more free time.'"
+                            },
+                            {
+                                problem: "What's the difference between 'I like' and 'My favorite'?",
+                                solution: "'I like' means you enjoy something. 'My favorite' means you like it the most out of all similar things. Example: 'I like math, science, and art. My favorite subject is science' (you like all three, but science is the one you like most)."
+                            }
+                        ],
+                        summary: "Learn school subjects (math, science, English, history, art, etc.). Know school activities (study, read, write, play, eat lunch). Identify hobbies (reading, drawing, sports, music, etc.). Express likes ('I like...' 'I love...' 'My favorite...') and dislikes ('I don't like...'). Talk about frequency (always, usually, sometimes, never, every day). Practice talking about school and hobbies - they're great conversation topics!"
+                    },
+                    "Weather and Seasons": {
+                        title: "Weather and Seasons",
+                        introduction: "Weather affects our daily lives - what we wear, what we do, and how we feel! Learning weather vocabulary helps you describe the day, plan activities, and have conversations. Let's learn about weather and seasons!",
+                        concepts: [
+                            {
+                                heading: "Weather Vocabulary",
+                                explanation: "Weather words describe conditions outside. Temperature: Hot (very warm), Warm (comfortably warm), Cool (slightly cold), Cold (very cold), Freezing (extremely cold). Conditions: Sunny (sun is shining), Cloudy (clouds in sky), Rainy (raining), Snowy (snowing), Windy (wind blowing), Foggy (low visibility), Stormy (thunder and lightning). You can combine: 'It's a warm, sunny day.'",
+                                example: "'Today is sunny and warm - perfect for playing outside!' 'It's cold and rainy today, so I'll stay inside.'"
+                            },
+                            {
+                                heading: "The Four Seasons",
+                                explanation: "Seasons are periods of the year with different weather. Spring (March-May): Usually warm, flowers bloom, rain common. Summer (June-August): Usually hot, sunny, longest days. Fall/Autumn (September-November): Getting cooler, leaves change color, harvest time. Winter (December-February): Usually cold, snow possible, shortest days. Seasons vary by location!",
+                                example: "'I love spring because it's warm and flowers are blooming.' 'Summer is my favorite season - it's hot and sunny, perfect for swimming!'"
+                            },
+                            {
+                                heading: "Describing Weather",
+                                explanation: "Use 'It is' or 'It's' to describe weather. Examples: 'It's sunny,' 'It is raining,' 'It's cold,' 'It's a beautiful day' (nice weather), 'It's a terrible day' (bad weather). You can add intensity: 'It's very hot,' 'It's extremely cold,' 'It's quite windy.' Weather affects what you can do!",
+                                example: "'It's sunny today, so we can go to the park.' 'It's raining heavily, so we should stay inside.' 'It's freezing cold - wear a warm coat!'"
+                            },
+                            {
+                                heading: "Weather and Activities",
+                                explanation: "Weather affects what activities you can do. Sunny/Warm: Play outside, go to the beach, have a picnic, play sports. Rainy: Stay inside, read books, watch movies, play board games. Snowy: Build snowmen, go sledding, have snowball fights, stay warm inside. Plan activities based on weather!",
+                                example: "'It's sunny, so let's play soccer outside!' 'It's raining, so we'll read books and watch movies inside.' 'It's snowy - perfect for building a snowman!'"
+                            },
+                            {
+                                heading: "Clothing for Weather",
+                                explanation: "Dress for the weather! Hot weather: Shorts, T-shirts, sandals, sunglasses, hat. Cold weather: Coat, sweater, long pants, boots, gloves, scarf, hat. Rainy weather: Raincoat, umbrella, boots. Appropriate clothing keeps you comfortable!",
+                                example: "'It's hot today, so I'm wearing shorts and a T-shirt.' 'It's cold, so I need a warm coat, gloves, and a hat.' 'It's raining, so I'll bring an umbrella and wear a raincoat.'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "How would you describe today's weather?",
+                                solution: "Example: 'Today is sunny and warm. It's a beautiful day - perfect for outdoor activities!' or 'Today is cloudy and cool. It might rain later, so I'll bring an umbrella.'"
+                            },
+                            {
+                                problem: "What activities would you do in different weather conditions?",
+                                solution: "Sunny: 'I would play outside, go to the park, or have a picnic.' Rainy: 'I would stay inside, read books, or watch movies.' Snowy: 'I would build a snowman, go sledding, or stay warm inside with hot chocolate.'"
+                            },
+                            {
+                                problem: "How does weather affect what you wear?",
+                                solution: "Hot weather: 'I wear light clothes like shorts and T-shirts to stay cool.' Cold weather: 'I wear warm clothes like a coat, sweater, and gloves to stay warm.' Rainy weather: 'I wear a raincoat and bring an umbrella to stay dry.'"
+                            }
+                        ],
+                        summary: "Learn weather vocabulary (sunny, rainy, cloudy, hot, cold, windy, etc.). Know the four seasons (spring, summer, fall/autumn, winter) and their characteristics. Describe weather using 'It's...' ('It's sunny,' 'It's cold'). Understand how weather affects activities (sunny = outdoor activities, rainy = indoor activities). Dress appropriately for weather (hot = light clothes, cold = warm clothes). Practice talking about weather - it's a common conversation topic!"
+                    },
+                    "Basic Grammar Rules": {
+                        title: "Basic Grammar Rules",
+                        introduction: "Grammar is the structure of language - it helps us communicate clearly and correctly! Understanding basic grammar rules makes your writing and speaking more effective. Let's learn essential grammar rules!",
+                        concepts: [
+                            {
+                                heading: "Nouns and Articles",
+                                explanation: "Nouns are words for people, places, things, or ideas. Common nouns: book, student, school, city. Proper nouns (capitalized): Maria, New York, Monday. Articles come before nouns: 'a' or 'an' (indefinite - one of many), 'the' (definite - specific one). Use 'a' before consonant sounds, 'an' before vowel sounds: 'a book,' 'an apple,' 'the book on the table.'",
+                                example: "'I have a book' (one book, not specific), 'I have the book' (specific book we know about), 'An apple a day keeps the doctor away.'"
+                            },
+                            {
+                                heading: "Subjects and Verbs",
+                                explanation: "Every sentence needs a subject (who/what does the action) and a verb (the action). Subject: The person or thing doing the action. Verb: The action or state. Examples: 'Maria reads' (Maria = subject, reads = verb), 'The dog runs' (dog = subject, runs = verb), 'We study' (we = subject, study = verb). Subject and verb must agree (match)!",
+                                example: "'I play soccer' (I = subject, play = verb), 'She plays soccer' (She = subject, plays = verb - note the 's' for she)"
+                            },
+                            {
+                                heading: "Adjectives",
+                                explanation: "Adjectives describe nouns (people, places, things). They answer: What kind? Which one? How many? Examples: 'a red car' (what kind - red), 'the big house' (what kind - big), 'three books' (how many - three). Adjectives usually come before the noun. You can use multiple adjectives: 'a big, red, fast car.'",
+                                example: "'She has a beautiful, long, brown dress' (beautiful, long, brown all describe the dress)"
+                            },
+                            {
+                                heading: "Sentence Structure",
+                                explanation: "Basic sentence structure: Subject + Verb + Object. Subject (who/what) + Verb (action) + Object (what receives the action). Examples: 'I (subject) read (verb) books (object),' 'She (subject) plays (verb) soccer (object),' 'They (subject) eat (verb) pizza (object).' This is the most common sentence pattern!",
+                                example: "'Maria (subject) studies (verb) math (object).' 'The students (subject) read (verb) books (object).'"
+                            },
+                            {
+                                heading: "Capitalization and Punctuation",
+                                explanation: "Capitalize: First word of sentence, Proper nouns (names, places, days), 'I' (always). Use punctuation: Period (.) for statements, Question mark (?) for questions, Exclamation mark (!) for excitement. Examples: 'I like pizza.' (statement), 'Do you like pizza?' (question), 'I love pizza!' (excitement). Proper capitalization and punctuation make writing clear!",
+                                example: "'Maria lives in New York. She goes to school on Monday. Do you know her? She's amazing!'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "What's the difference between 'a book' and 'the book'?",
+                                solution: "'A book' means any book (indefinite - one of many books). 'The book' means a specific book that we know about or have mentioned (definite - the specific one). Example: 'I need a book' (any book) vs 'I need the book we talked about' (specific book)."
+                            },
+                            {
+                                problem: "Identify the subject and verb in: 'The students study English every day.'",
+                                solution: "Subject: 'The students' (who does the action). Verb: 'study' (the action). Object: 'English' (what they study). The sentence structure is: Subject (The students) + Verb (study) + Object (English) + Time (every day)."
+                            },
+                            {
+                                problem: "Fix the capitalization and punctuation: 'do you like pizza i love it'",
+                                solution: "'Do you like pizza? I love it!' Capitalize the first word of each sentence ('Do,' 'I'). Use a question mark after the question ('?'). Use an exclamation mark to show excitement ('!')."
+                            }
+                        ],
+                        summary: "Nouns name people, places, things, ideas. Use articles correctly ('a/an' for indefinite, 'the' for definite). Every sentence needs a subject and verb that agree. Adjectives describe nouns (usually before the noun). Basic sentence structure: Subject + Verb + Object. Capitalize properly (first word, proper nouns, 'I'). Use punctuation correctly (period, question mark, exclamation mark). Practice these grammar rules - they're the foundation of good communication!"
+                    }
+                }
+            },
+            8: {
+                language: {
+                    "Past Tense Introduction": {
+                        title: "Past Tense Introduction",
+                        introduction: "Past tense describes actions that already happened - yesterday, last week, or any time before now! Understanding past tense helps you tell stories, describe experiences, and talk about history. Let's master past tense!",
+                        concepts: [
+                            {
+                                heading: "What Is Past Tense?",
+                                explanation: "Past tense describes actions, events, or states that happened in the past (before now). Examples: 'I walked to school yesterday' (happened in the past), 'She studied math last week' (completed action), 'They were happy' (past state). Past tense helps you talk about what already happened!",
+                                example: "'Yesterday, I played soccer' (past action), 'Last year, I was in 7th grade' (past state), 'We visited the museum' (past action)"
+                            },
+                            {
+                                heading: "Regular Past Tense Verbs",
+                                explanation: "Most verbs form past tense by adding -ed. Examples: Walk → walked, Play → played, Study → studied, Help → helped, Talk → talked. Spelling rules: If verb ends in -e, just add -d (like → liked). If verb ends in consonant + y, change y to i and add -ed (study → studied). If verb ends in vowel + y, just add -ed (play → played).",
+                                example: "'I walk to school' (present) → 'I walked to school yesterday' (past), 'She studies math' (present) → 'She studied math last night' (past)"
+                            },
+                            {
+                                heading: "Irregular Past Tense Verbs",
+                                explanation: "Many common verbs are irregular - they don't follow the -ed pattern. You must memorize them! Common irregulars: Go → went, Have → had, Do → did, See → saw, Come → came, Take → took, Give → gave, Get → got, Make → made, Say → said, Tell → told, Think → thought, Know → knew, Find → found. These are very common, so learn them well!",
+                                example: "'I go to school' (present) → 'I went to school' (past), 'She has a book' (present) → 'She had a book' (past), 'We see a movie' (present) → 'We saw a movie' (past)"
+                            },
+                            {
+                                heading: "Using Past Tense",
+                                explanation: "Use past tense with time expressions that show the past. Time expressions: Yesterday, Last week/month/year, Two days ago, In 2020, When I was young, Earlier today, This morning (if it's now afternoon/evening). Examples: 'I finished my homework yesterday,' 'She visited her friend last week,' 'We went to the park this morning.'",
+                                example: "'Yesterday, I played soccer with my friends.' 'Last year, I studied French.' 'Two days ago, we visited the museum.'"
+                            },
+                            {
+                                heading: "Negative and Questions in Past Tense",
+                                explanation: "For negatives, use 'did not' (didn't) + base verb: 'I didn't go,' 'She didn't study,' 'They didn't play.' For questions, use 'did' + subject + base verb: 'Did you go?' 'Did she study?' 'Did they play?' The verb 'be' is different: 'I was not' (wasn't), 'You were not' (weren't), 'Were you...?' 'Was she...?'",
+                                example: "'I didn't finish my homework' (negative), 'Did you finish your homework?' (question), 'She wasn't at school' (negative with 'be'), 'Were you at the party?' (question with 'be')"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "Change to past tense: 'I play soccer every day.'",
+                                solution: "'I played soccer yesterday' or 'I played soccer last week.' Change 'play' to 'played' (regular verb - add -ed) and add a past time expression."
+                            },
+                            {
+                                problem: "What's the past tense of 'go,' 'see,' and 'have'?",
+                                solution: "Go → went, See → saw, Have → had. These are irregular verbs, so they don't follow the -ed pattern. You need to memorize irregular past tense forms!"
+                            },
+                            {
+                                problem: "How do you make 'I went to the store' negative and turn it into a question?",
+                                solution: "Negative: 'I didn't go to the store' (use 'didn't' + base verb 'go,' not 'went'). Question: 'Did you go to the store?' (use 'did' + subject + base verb 'go')."
+                            }
+                        ],
+                        summary: "Past tense describes actions that happened before now. Regular verbs add -ed (walk → walked). Irregular verbs change form (go → went, see → saw) - memorize them! Use past time expressions (yesterday, last week, etc.). Use 'didn't' for negatives and 'did' for questions with most verbs. 'Be' is different (was/were). Practice using past tense to tell stories and describe experiences!"
+                    },
+                    "Future Tense": {
+                        title: "Future Tense",
+                        introduction: "Future tense describes actions that will happen - tomorrow, next week, or any time after now! Learning future tense helps you make plans, talk about goals, and describe upcoming events. Let's explore future tense!",
+                        concepts: [
+                            {
+                                heading: "What Is Future Tense?",
+                                explanation: "Future tense describes actions, events, or states that will happen in the future (after now). Examples: 'I will go to school tomorrow' (will happen), 'She is going to study tonight' (planned action), 'We are leaving next week' (scheduled event). Future tense helps you talk about what's coming!",
+                                example: "'Tomorrow, I will play soccer' (future action), 'Next year, I will be in 9th grade' (future state), 'We are going to visit the museum' (planned action)"
+                            },
+                            {
+                                heading: "Using 'Will'",
+                                explanation: "'Will' + base verb shows future actions. Use 'will' for: Predictions (what you think will happen), Spontaneous decisions (deciding now), Promises, Offers. Examples: 'I will help you' (promise/offer), 'It will rain tomorrow' (prediction), 'I will study tonight' (decision/plan). 'Will' is the most common future form!",
+                                example: "'I will finish my homework tonight' (plan), 'She will be a doctor one day' (prediction), 'I will help you with that' (offer)"
+                            },
+                            {
+                                heading: "Using 'Going To'",
+                                explanation: "'Be going to' + base verb shows planned future actions. Use 'going to' for: Plans you've already made, Intentions, Predictions based on evidence. Examples: 'I am going to study tonight' (plan), 'She is going to visit her friend' (intention), 'It's going to rain' (evidence - you see dark clouds). 'Going to' emphasizes planning!",
+                                example: "'I am going to play soccer tomorrow' (plan), 'We are going to have a party next week' (planned event), 'Look at those clouds - it's going to rain!' (prediction with evidence)"
+                            },
+                            {
+                                heading: "Present Continuous for Future",
+                                explanation: "Present continuous (am/is/are + -ing) can show future plans, especially scheduled events. Use for: Fixed arrangements, Scheduled events, Definite plans. Examples: 'I am meeting my friend tomorrow' (arranged), 'We are leaving next week' (scheduled), 'She is flying to Paris on Monday' (definite plan). This is common for near-future plans!",
+                                example: "'I am studying with Maria tonight' (arranged), 'The train is leaving at 3 PM' (scheduled), 'We are having a test next Friday' (definite plan)"
+                            },
+                            {
+                                heading: "Future Time Expressions",
+                                explanation: "Use future time expressions with future tense. Common expressions: Tomorrow, Next week/month/year, In the future, Soon, Later, Tonight, This evening, Next Monday, In two days. Examples: 'I will study tomorrow,' 'She is going to travel next year,' 'We are meeting tonight.'",
+                                example: "'Tomorrow, I will finish my project.' 'Next week, we are going to the beach.' 'I am studying tonight for the test.'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "What's the difference between 'I will study' and 'I am going to study'?",
+                                solution: "'I will study' can be a spontaneous decision or prediction. 'I am going to study' shows a plan or intention you've already made. Both are correct, but 'going to' emphasizes that you've planned it. Example: 'I will study' (deciding now) vs 'I am going to study' (you already planned to study)."
+                            },
+                            {
+                                problem: "How would you say you have a plan to visit your friend next week?",
+                                solution: "You could say: 'I am going to visit my friend next week' (planned intention) or 'I am visiting my friend next week' (arranged plan). Both show it's a definite plan, not just a possibility."
+                            },
+                            {
+                                problem: "Use future tense to describe your plans for this weekend.",
+                                solution: "Example: 'This weekend, I am going to finish my homework on Saturday. Then I am meeting my friends on Sunday. We are going to play soccer and have fun. I will also study for my test on Monday.'"
+                            }
+                        ],
+                        summary: "Future tense describes actions that will happen. Use 'will' for predictions, spontaneous decisions, promises, offers. Use 'going to' for plans and intentions. Use present continuous (am/is/are + -ing) for scheduled/arranged events. Use future time expressions (tomorrow, next week, tonight, etc.). Practice using future tense to talk about your plans and goals!"
+                    },
+                    "Adjectives and Adverbs": {
+                        title: "Adjectives and Adverbs",
+                        introduction: "Adjectives and adverbs make your language more descriptive and interesting! Adjectives describe nouns (people, places, things), and adverbs describe verbs, adjectives, or other adverbs. Let's learn how to use them effectively!",
+                        concepts: [
+                            {
+                                heading: "What Are Adjectives?",
+                                explanation: "Adjectives describe nouns (people, places, things, ideas). They answer: What kind? Which one? How many? Examples: 'a red car' (what kind - red), 'the big house' (what kind - big), 'three books' (how many - three), 'my favorite teacher' (which one - favorite). Adjectives usually come before the noun. They make descriptions vivid!",
+                                example: "'She has a beautiful, long, brown dress' (beautiful, long, brown all describe the dress), 'The smart student studies hard' (smart describes the student)"
+                            },
+                            {
+                                heading: "Common Types of Adjectives",
+                                explanation: "Different types of adjectives describe different qualities. Size: Big, small, large, tiny, huge. Color: Red, blue, green, yellow, black, white. Shape: Round, square, long, short, wide. Personality: Kind, funny, smart, friendly, shy. Feelings: Happy, sad, excited, tired, angry. Age: Young, old, new, ancient. You can combine multiple adjectives!",
+                                example: "'A big, red, round ball' (size + color + shape), 'A kind, smart, young teacher' (personality + intelligence + age)"
+                            },
+                            {
+                                heading: "What Are Adverbs?",
+                                explanation: "Adverbs describe verbs (actions), adjectives, or other adverbs. They answer: How? When? Where? How much? Most adverbs end in -ly. Examples: 'She runs quickly' (how - quickly describes 'runs'), 'He speaks loudly' (how - loudly describes 'speaks'), 'I study carefully' (how - carefully describes 'study'). Adverbs make actions more specific!",
+                                example: "'She sings beautifully' (beautifully describes how she sings), 'He works very hard' (hard describes how he works, very describes hard)"
+                            },
+                            {
+                                heading: "Common Adverbs",
+                                explanation: "Common adverbs include: How: Quickly, slowly, carefully, easily, well, badly, loudly, quietly, happily, sadly. When: Now, then, soon, always, never, often, sometimes, yesterday, today, tomorrow. Where: Here, there, everywhere, inside, outside, upstairs, downstairs. Degree: Very, really, quite, too, enough, almost. Adverbs add detail to your language!",
+                                example: "'She runs quickly' (how), 'I always study' (when), 'He works very hard' (degree), 'Put it here' (where)"
+                            },
+                            {
+                                heading: "Adjective vs Adverb",
+                                explanation: "Adjectives describe nouns. Adverbs describe verbs, adjectives, or other adverbs. Common mistake: Using adjective instead of adverb with verbs. Correct: 'She sings beautifully' (adverb - describes 'sings'). Incorrect: 'She sings beautiful' (adjective - can't describe verb). Remember: Adjectives describe nouns, adverbs describe verbs!",
+                                example: "'She is a beautiful singer' (beautiful = adjective describing 'singer' = noun) vs 'She sings beautifully' (beautifully = adverb describing 'sings' = verb)"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "What's the difference between 'She is a careful driver' and 'She drives carefully'?",
+                                solution: "'She is a careful driver' uses 'careful' (adjective) to describe 'driver' (noun). 'She drives carefully' uses 'carefully' (adverb) to describe 'drives' (verb). Both are correct, but the structure is different: adjective + noun vs verb + adverb."
+                            },
+                            {
+                                problem: "Identify the adjectives and adverbs in: 'The smart student studies very carefully every day.'",
+                                solution: "Adjectives: 'smart' (describes 'student' - noun). Adverbs: 'very' (describes 'carefully'), 'carefully' (describes 'studies' - verb), 'every day' (tells when - adverb phrase)."
+                            },
+                            {
+                                problem: "Fix the error: 'She runs quick to school.'",
+                                solution: "'She runs quickly to school.' 'Quick' is an adjective (describes nouns). 'Quickly' is an adverb (describes verbs). Since 'runs' is a verb, you need the adverb 'quickly,' not the adjective 'quick.'"
+                            }
+                        ],
+                        summary: "Adjectives describe nouns (people, places, things) - answer what kind, which one, how many. Adverbs describe verbs, adjectives, or other adverbs - answer how, when, where, how much. Most adverbs end in -ly. Adjectives usually come before nouns. Adverbs can come before or after verbs. Don't confuse them - adjectives describe nouns, adverbs describe verbs! Practice using adjectives and adverbs to make your language more descriptive!"
+                    },
+                    "Question Formation": {
+                        title: "Question Formation",
+                        introduction: "Questions help us learn, get information, and have conversations! Knowing how to form questions correctly is essential for communication. Let's master question formation!",
+                        concepts: [
+                            {
+                                heading: "Yes/No Questions",
+                                explanation: "Yes/No questions can be answered with 'yes' or 'no.' For most verbs, use 'Do/Does/Did' + subject + base verb. Examples: 'Do you like pizza?' (present, you/we/they/I), 'Does she play soccer?' (present, he/she/it), 'Did they go?' (past, all subjects). For 'be' verb, invert subject and verb: 'Are you happy?' 'Is she a student?' 'Was he here?'",
+                                example: "'Do you study English?' → 'Yes, I do' or 'No, I don't.' 'Is she your friend?' → 'Yes, she is' or 'No, she isn't.'"
+                            },
+                            {
+                                heading: "WH- Questions",
+                                explanation: "WH- questions ask for specific information. Question words: What (things), Who (people), Where (places), When (time), Why (reasons), How (manner/method), Which (choice), Whose (possession). Structure: Question word + auxiliary verb (do/does/did/is/are/was/were) + subject + main verb. Examples: 'What do you like?' 'Where does she live?' 'When did they arrive?'",
+                                example: "'What is your name?' (asking for name), 'Where do you live?' (asking for place), 'Why are you sad?' (asking for reason), 'How do you get to school?' (asking for method)"
+                            },
+                            {
+                                heading: "Question Word Order",
+                                explanation: "In questions, the word order changes. Statement: 'You like pizza' (subject + verb). Question: 'Do you like pizza?' (auxiliary + subject + verb). WH- question: 'What do you like?' (question word + auxiliary + subject + verb). The subject comes after the auxiliary verb in questions!",
+                                example: "Statement: 'She plays soccer.' Question: 'Does she play soccer?' (does + she + play). WH-: 'What does she play?' (what + does + she + play)"
+                            },
+                            {
+                                heading: "Questions with 'Be' Verb",
+                                explanation: "Questions with 'be' (am/is/are/was/were) don't need 'do/does/did.' Just invert the subject and 'be' verb. Examples: 'Are you a student?' (not 'Do you are'), 'Is she happy?' (not 'Does she is'), 'Were they here?' (not 'Did they were'). 'Be' questions are simpler!",
+                                example: "'Are you tired?' 'Is he your friend?' 'Was she at school?' 'Were we late?'"
+                            },
+                            {
+                                heading: "Tag Questions",
+                                explanation: "Tag questions are short questions added to statements. They ask for confirmation. Positive statement + negative tag: 'You like pizza, don't you?' Negative statement + positive tag: 'You don't like broccoli, do you?' Use the same auxiliary verb as the statement. Tag questions are common in conversation!",
+                                example: "'You're a student, aren't you?' (positive statement + negative tag), 'She doesn't like math, does she?' (negative statement + positive tag), 'We can go, can't we?' (positive statement + negative tag)"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "Turn this statement into a question: 'She plays soccer.'",
+                                solution: "'Does she play soccer?' Use 'Does' (for he/she/it in present) + subject (she) + base verb (play, not plays). Remember: in questions, use the base verb, not the -s form."
+                            },
+                            {
+                                problem: "Form WH- questions for these answers: 'I live in New York.' 'I go to school by bus.'",
+                                solution: "'Where do you live?' (asking for place - New York). 'How do you get to school?' (asking for method - by bus). Use the appropriate question word (Where for places, How for methods) + do/does + subject + verb."
+                            },
+                            {
+                                problem: "What's the difference between 'Are you a student?' and 'Do you study?'",
+                                solution: "'Are you a student?' uses 'be' verb (are) - asking about identity/state. 'Do you study?' uses 'do' + main verb (study) - asking about action. 'Be' verb questions don't need 'do/does/did' - just invert subject and 'be.'"
+                            }
+                        ],
+                        summary: "Yes/No questions use 'Do/Does/Did' + subject + base verb (or invert 'be' verb). WH- questions use question words (what, who, where, when, why, how) + auxiliary + subject + verb. Question word order: Question word + auxiliary + subject + verb. 'Be' verb questions just invert subject and 'be' (no 'do/does/did'). Tag questions add short questions to statements. Practice forming questions - they're essential for communication!"
+                    },
+                    "Travel Vocabulary": {
+                        title: "Travel Vocabulary",
+                        introduction: "Travel opens up the world! Learning travel vocabulary helps you navigate airports, hotels, restaurants, and new places. Whether you're planning a trip or just dreaming of adventure, travel vocabulary is useful!",
+                        concepts: [
+                            {
+                                heading: "Transportation",
+                                explanation: "Different ways to travel. Air: Airplane/Plane (flies in sky), Airport (where planes take off/land), Flight (trip on plane), Ticket (paper to travel), Boarding pass (permission to get on plane). Land: Car, Bus, Train, Taxi, Subway/Metro (underground train), Bicycle/Bike. Water: Ship, Boat, Ferry. Learn these to talk about how you travel!",
+                                example: "'I'm taking a flight to Paris. I'll go to the airport, get my boarding pass, and board the plane.' 'I usually take the bus or subway to school.'"
+                            },
+                            {
+                                heading: "Accommodation",
+                                explanation: "Places to stay when traveling. Hotel (paid accommodation), Room (where you sleep), Reservation/Booking (arranged stay), Check-in (arrive and register), Check-out (leave and pay), Reception (front desk), Key (opens door), Suite (large room). You might also stay at: Hostel (budget accommodation), Airbnb (rented room/apartment), Camping (tent outdoors).",
+                                example: "'I made a reservation at a hotel. I'll check in at 3 PM and check out on Sunday. My room is on the third floor.'"
+                            },
+                            {
+                                heading: "Travel Documents",
+                                explanation: "Important papers for travel. Passport (identity document for international travel), Visa (permission to enter country), Ticket (travel document), Boarding pass (permission to board), ID/Identification (identity proof), Driver's license (permission to drive), Insurance (protection). Always keep these safe!",
+                                example: "'I need my passport and visa to travel to another country. I also need my ticket and boarding pass for the flight.'"
+                            },
+                            {
+                                heading: "At the Airport",
+                                explanation: "Airport vocabulary helps you navigate. Check-in (register for flight), Security (safety check), Gate (where you board), Boarding (getting on plane), Departure (leaving), Arrival (arriving), Luggage/Baggage (your bags), Carry-on (bag you bring on plane), Suitcase (travel bag), Delay (late), Cancelled (not happening). Know these for smooth travel!",
+                                example: "'I'll check in at the airport, go through security, and wait at gate 12 for boarding. My flight departs at 3 PM.'"
+                            },
+                            {
+                                heading: "Travel Activities",
+                                explanation: "Things to do while traveling. Sightseeing (visiting places), Tour (guided visit), Museum (art/history place), Restaurant (place to eat), Shopping (buying things), Beach (sandy shore), Mountain (high land), City (urban area), Countryside (rural area), Culture (customs of place), Local (from the area). Travel is about exploring!",
+                                example: "'I'm going sightseeing in Paris. I'll visit museums, eat at local restaurants, and go shopping. I want to experience the culture.'"
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "Describe the steps of traveling by plane.",
+                                solution: "First, make a reservation/book a ticket. Then, go to the airport and check in. Go through security. Wait at your gate. When boarding starts, board the plane with your boarding pass. The plane departs. When you arrive, collect your luggage and leave the airport."
+                            },
+                            {
+                                problem: "What documents do you need for international travel?",
+                                solution: "You need a passport (identity document), a visa (if required by the country), your ticket, and a boarding pass. You might also need travel insurance. Always check what documents are required for your destination!"
+                            },
+                            {
+                                problem: "How would you describe your ideal vacation?",
+                                solution: "Example: 'My ideal vacation is traveling to a beautiful beach. I'll stay at a nice hotel, go sightseeing, visit museums, eat at local restaurants, and relax. I want to experience the local culture and meet new people.'"
+                            }
+                        ],
+                        summary: "Learn transportation vocabulary (airplane, bus, train, car, etc.). Know accommodation terms (hotel, room, reservation, check-in, check-out). Understand travel documents (passport, visa, ticket, boarding pass). Master airport vocabulary (check-in, security, gate, boarding, departure, arrival). Explore travel activities (sightseeing, museums, restaurants, shopping, culture). Practice travel vocabulary - it's useful for real trips and conversations!"
+                    },
+                    "Cultural Context": {
+                        title: "Cultural Context",
+                        introduction: "Language and culture are deeply connected! Understanding cultural context helps you communicate appropriately, show respect, and connect with people from different backgrounds. Let's explore how culture affects language!",
+                        concepts: [
+                            {
+                                heading: "What Is Cultural Context?",
+                                explanation: "Cultural context is the background knowledge, customs, values, and social norms that affect how language is used and understood. Different cultures have different ways of: Greeting people, Showing respect, Expressing politeness, Using gestures, Celebrating, Eating, Dressing. Understanding cultural context prevents misunderstandings!",
+                                example: "In some cultures, it's polite to bow when greeting. In others, a handshake is appropriate. In some cultures, direct eye contact shows respect; in others, it might be considered rude."
+                            },
+                            {
+                                heading: "Cultural Differences in Communication",
+                                explanation: "Communication styles vary by culture. Direct vs Indirect: Some cultures are direct (say what they mean), others are indirect (hint at meaning). Formal vs Informal: Some cultures use formal language more, others are more casual. Personal Space: Some cultures stand close when talking, others prefer more distance. Understanding these differences helps communication!",
+                                example: "In some cultures, saying 'no' directly is considered rude, so people might say 'maybe' or 'I'll think about it' instead. In other cultures, being direct and clear is valued."
+                            },
+                            {
+                                heading: "Cultural Expressions and Idioms",
+                                explanation: "Every culture has unique expressions and idioms (phrases with special meanings). Examples: English: 'Break a leg' (good luck), 'It's raining cats and dogs' (raining heavily). These don't translate literally! Understanding cultural expressions helps you understand native speakers and avoid confusion. Learn expressions from the culture you're studying!",
+                                example: "'Break a leg' doesn't mean actually breaking a leg - it means 'good luck!' This is an English idiom that makes sense only if you know the cultural context."
+                            },
+                            {
+                                heading: "Respect and Politeness Across Cultures",
+                                explanation: "Different cultures show respect differently. Language: Some languages have formal/informal 'you' (like Spanish 'tú' vs 'usted'). Gestures: Bowing, handshakes, hugs vary by culture. Titles: Using titles (Mr., Mrs., Dr.) is important in some cultures. Gifts: Gift-giving customs vary. Understanding these shows cultural awareness and respect!",
+                                example: "In Japanese culture, bowing shows respect. In many Western cultures, a firm handshake shows respect. In some cultures, using someone's first name without permission is disrespectful."
+                            },
+                            {
+                                heading: "Learning About Culture",
+                                explanation: "To understand cultural context: Study the culture (read, watch, learn), Talk to native speakers (ask questions), Travel if possible (experience it), Be open-minded (accept differences), Show respect (follow customs when appropriate), Ask questions (people appreciate interest). Cultural understanding makes language learning richer!",
+                                example: "If you're learning Spanish, learn about Spanish-speaking countries' customs, holidays, food, and social norms. This helps you understand not just the words, but how and when to use them appropriately."
+                            }
+                        ],
+                        practiceProblems: [
+                            {
+                                problem: "Why is understanding cultural context important when learning a language?",
+                                solution: "Understanding cultural context helps you: 1) Use language appropriately (know when formal vs informal), 2) Avoid misunderstandings (gestures, expressions mean different things), 3) Show respect (follow cultural customs), 4) Connect with people (understand their background), 5) Understand idioms and expressions (they're culture-specific). Language and culture are connected!"
+                            },
+                            {
+                                problem: "Give an example of how the same gesture might mean different things in different cultures.",
+                                solution: "The 'thumbs up' gesture means 'good' or 'okay' in many Western cultures, but it can be offensive in some Middle Eastern and Asian cultures. Eye contact shows respect and attention in many Western cultures, but in some Asian cultures, avoiding direct eye contact with elders shows respect. Understanding these differences prevents misunderstandings!"
+                            },
+                            {
+                                problem: "How can you learn about cultural context when studying a language?",
+                                solution: "You can: 1) Read about the culture (books, articles, websites), 2) Watch movies/TV shows from that culture, 3) Talk to native speakers and ask questions, 4) Travel to countries where the language is spoken, 5) Learn about holidays, customs, and traditions, 6) Study cultural expressions and idioms, 7) Be open-minded and respectful of differences."
+                            }
+                        ],
+                        summary: "Cultural context is the background knowledge and customs that affect language use. Communication styles vary (direct vs indirect, formal vs informal). Cultural expressions and idioms are unique to each culture. Respect and politeness are shown differently across cultures. Learn about culture through study, conversation, travel, and being open-minded. Understanding cultural context makes you a better language learner and communicator!"
+                    }
+                }
+            },
             9: {
                 language: {
                     "Spanish Basics": {
@@ -358,17 +1213,30 @@
             if (!content) {
                 const defaultContent = {
                     title: lessonTitle,
-                    notes: [
-                        `Welcome to ${lessonTitle}!`,
-                        "This lesson will help you understand key concepts.",
-                        "Take your time to read through the notes carefully.",
-                        "Practice the examples to reinforce your learning.",
-                        "Complete this lesson to unlock practice quizzes!"
+                    introduction: `Welcome to ${lessonTitle}! This language lesson will help you learn new vocabulary, grammar, and communication skills. Take your time to read through the material carefully and practice the exercises.`,
+                    concepts: [
+                        {
+                            heading: "Introduction to " + lessonTitle,
+                            explanation: "This lesson covers the fundamental concepts of " + lessonTitle + ". Understanding these concepts is essential for building strong language skills and communication abilities.",
+                            example: "Work through the examples provided to see how these concepts apply in real-world language use."
+                        },
+                        {
+                            heading: "Language Skills",
+                            explanation: "Master the core language skills that help you understand and use " + lessonTitle + ". These skills will help you communicate more effectively and expand your vocabulary.",
+                            example: "Practice applying these skills in different contexts to reinforce your understanding."
+                        }
                     ],
-                    examples: [
-                        "Example 1: Practice problem",
-                        "Example 2: Another practice problem"
-                    ]
+                    practiceProblems: [
+                        {
+                            problem: "Apply the language concepts you've learned to practice using " + lessonTitle + ".",
+                            solution: "Work through the practice step by step, applying the key language skills and concepts you've learned in this lesson."
+                        },
+                        {
+                            problem: "Think about how " + lessonTitle + " relates to real-world communication.",
+                            solution: "Consider practical applications and examples from everyday conversations and written communication that demonstrate these concepts."
+                        }
+                    ],
+                    summary: "In this lesson, you've explored the fundamentals of " + lessonTitle + ". Continue practicing these language concepts and complete this lesson to unlock practice quizzes and advance to the next level!"
                 };
                 displayLessonContent(defaultContent, isAlreadyCompleted);
             } else {
@@ -551,7 +1419,7 @@
                         <h3 class="text-xl font-bold flex-1">${lesson.title}</h3>
                         ${isCompleted ? '<span class="text-2xl ml-2 flex-shrink-0">✅</span>' : ''}
                     </div>
-                    <p class="text-sm text-[#F5F7FA]/70 mb-2">Difficulty: <span class="font-bold" style="color: ${lesson.difficulty === 'Easy' ? '#4FC3F7' : lesson.difficulty === 'Medium' ? '#FF6EC7' : '#482880'}">${lesson.difficulty}</span></p>
+                    <p class="text-sm text-[#F5F7FA]/70 mb-2">Difficulty: <span class="font-bold" style="color: ${lesson.difficulty === 'Easy' ? '#4FC3F7' : lesson.difficulty === 'Medium' ? '#FF6EC7' : '#FFFFFF'}">${lesson.difficulty}</span></p>
                     <p class="text-xs text-[#F5F7FA]/50 mb-4">Grade ${grade} Level</p>
                     <div class="mt-auto flex gap-2">
                         <button class="btn-primary flex-1 complete-lesson-btn" 
@@ -614,6 +1482,9 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             if (isLoggedIn()) {
+                // Set current subject
+                currentSubject = 'language';
+                
                 // Set up grade selector
                 const gradeSelector = document.getElementById('gradeSelector');
                 if (gradeSelector) {
